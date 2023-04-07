@@ -1,0 +1,29 @@
+.RegLoginAlign{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoggedinHeader{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deleteButton {
+        background-color: #e60e0efa !important;
+}
+
+.delete{
+    display:flex;
+}
+
+.deleteInput{
+    width:50px;
+}
+
+.errorLogin{
+    color:red;
+    font-weight: bold;
+    font-size: 14px;
+}
