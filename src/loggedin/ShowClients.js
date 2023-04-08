@@ -1,25 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import axios from 'axios';
-import {Table} from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { Table } from "react-bootstrap";
 
-export default function ShowClients(){
+export default function ShowClients() {
+  const [clientsData, setClientsData] = useState([]);
 
-    const [clientsData,setClientsData] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/loggedin/showusers")
+      .then((response) => {
+        setClientsData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-    useEffect(() => {
-      axios.get("http://localhost:3000/loggedin/showusers")
-        .then((response) => {
-          setClientsData(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, []);
-
-
-    return (
-      <Table striped bordered hover>
+  return (
+    <Table striped bordered hover>
       <thead>
         <tr>
           <th>#</th>
@@ -32,7 +31,7 @@ export default function ShowClients(){
         </tr>
       </thead>
       <tbody>
-      {clientsData.map((item) => (
+        {clientsData.map((item) => (
           <tr key={item.id}>
             <td>{item.id}</td>
             <td>{item.first_name}</td>
@@ -45,5 +44,5 @@ export default function ShowClients(){
         ))}
       </tbody>
     </Table>
-    )
+  );
 }
