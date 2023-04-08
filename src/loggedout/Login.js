@@ -16,10 +16,27 @@ import loginBackgroundImage from "../images/bg-login.png";
 import { MainPageContext } from "../contexts/MainPageContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
+import { useFormik } from "formik";
+import { mySchema } from "../schema/mySchema";
 
 export default function Login() {
   const modalContext = useContext(MainPageContext);
   const isSpinnerVisible = false;
+
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    setTimeout(() => {
+      actions.resetForm();
+    }, 1000);
+  };
+
+  const loginForm = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: mySchema,
+    onSubmit,
+  });
 
   const openRegisterModal = () => {
     modalContext.setLoginModalVisibility(false);
@@ -71,7 +88,15 @@ export default function Login() {
                   <CInputGroup className="mb-4">
                     <CFormInput
                       placeholder="E-mail"
-                      className="light-background"
+                      name="email"
+                      value={loginForm.values.email}
+                      onChange={loginForm.handleChange}
+                      onBlur={loginForm.handleBlur}
+                      className={
+                        loginForm.errors.email && loginForm.touched.email
+                          ? "input-error"
+                          : ""
+                      }
                     />
                   </CInputGroup>
                   <CInputGroup className="mb-4">

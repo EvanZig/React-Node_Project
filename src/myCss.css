@@ -27,3 +27,13 @@
     font-weight: bold;
     font-size: 14px;
 }
+
+input.input-error,
+select.input-error {
+  border-color: #fc8181;
+}
+
+.error{
+  margin-top: -20px;
+  font-size: 14px;
+}

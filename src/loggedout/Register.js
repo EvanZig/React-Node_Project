@@ -47,7 +47,8 @@ export default function Register() {
   const isSpinnerVisible = false;
 
   const openLoginModal = () => {
-    // modalContext.setRegisterModalVisibility(false)
+    modalContext.setRegisterModalVisibility(false);
+    modalContext.setLoginModalVisibility(true);
   };
 
   return (
