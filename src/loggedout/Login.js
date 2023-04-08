@@ -1,88 +1,131 @@
-import React, {useState, useRef, useContext} from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button , Form, Modal} from 'react-bootstrap'
-import { AuthContext } from '../Context'
+import React, { useContext } from "react";
+import {
+  CForm,
+  CButton,
+  CInputGroup,
+  CCardBody,
+  CSpinner,
+  CRow,
+  CCol,
+  CCard,
+  CFormInput,
+  CModal,
+} from "@coreui/react";
+import "@coreui/coreui/dist/css/coreui.min.css";
+import loginBackgroundImage from "../images/bg-login.png";
+import { MainPageContext } from "../contexts/MainPageContext";
+import { cilXCircle } from "@coreui/icons";
+import CIcon from "@coreui/icons-react";
 
+export default function Login() {
+  const modalContext = useContext(MainPageContext);
+  const isSpinnerVisible = false;
 
-export default function Login(){
-  const [show, setShow] = useState(false);
-  const [wrongCredentials, setWrongCredentials] = useState(false);
+  const openRegisterModal = () => {
+    modalContext.setLoginModalVisibility(false);
+    modalContext.setRegisterModalVisibility(true);
+  };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  
-  const emailInput = useRef();
-  const passwordInput = useRef();
-
-  const authContext = useContext(AuthContext)
-  // const navigate = useNavigate();
-
-  async function handleSubmit(event){
-    event.preventDefault();
-      const email = emailInput.current.value
-      const password = passwordInput.current.value
-
-      await authContext.signInWithEmail(email,password,setWrongCredentials)
-
-      // axios.post("http://localhost:3000/login",
-      // {email: email,
-      // password: password})
-      // .then((response) => {
-      //   const accessToken = response.data;
-      //   localStorage.setItem('access_token', accessToken)
-      //   if(response.status === 200){
-      //     navigate('/loggedinprofile')
-      //   }
-      // })
-      // .catch((error)=> {
-      //   console.error(error);
-      //   setWrongCredentials(true)
-      //   // navigate('/loggedinprofile')
-      // })
-  }
-
-    return(
-        <div>
-          <Button variant="primary" onClick={handleShow}>
+  return (
+    <>
+      <CButton
+        onClick={() => {
+          modalContext.setLoginModalVisibility(true);
+        }}
+        className="mr-1"
+      >
         Login
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-      <Form style ={{width: '90%'}} onSubmit={handleSubmit}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" ref={emailInput}/>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-            <div className ="errorLogin">{wrongCredentials ? "wrong credentials": ""}</div>
-          </Form.Text>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" ref={passwordInput} />
-          <div className ="errorLogin">{wrongCredentials ? "wrong credentials": ""}</div>
-          </Form.Group>
-
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-
-          <Button variant="primary" type="submit">
-            Login
-          </Button>
-          
-        </Modal.Footer>
-        </Form>
-      </Modal>
-
-        </div>
-    )
+      </CButton>
+      <CModal
+        className="show d-block spartan-font"
+        backdrop={true}
+        keyboard={false}
+        portal={false}
+        size="xl"
+        onClose={() => modalContext.setLoginModalVisibility(false)}
+        visible={modalContext.loginModalVisibility}
+        alignment="center"
+        style={{
+          backgroundImage: `url(${loginBackgroundImage})`,
+          backgroundSize: `cover`,
+          borderRadius: `0px`,
+        }}
+      >
+        <CRow className="justify-content-end">
+          <CCol></CCol>
+          <CCol className="col-lg-7">
+            <CCard style={{ borderRadius: `0px` }}>
+              <div className=" d-flex flex-row justify-content-end align-items-end m-3">
+                <CIcon
+                  role="button"
+                  icon={cilXCircle}
+                  className="icon-xl"
+                  onClick={() => modalContext.setLoginModalVisibility(false)}
+                />
+              </div>
+              <CCardBody className="m-5 p-xl-5">
+                <div className="d-flex flex-column mb-4">
+                  <h2>Log in</h2>
+                </div>
+                <CForm id="main">
+                  <CInputGroup className="mb-4">
+                    <CFormInput
+                      placeholder="E-mail"
+                      className="light-background"
+                    />
+                  </CInputGroup>
+                  <CInputGroup className="mb-4">
+                    <CFormInput
+                      type="password"
+                      placeholder="Password"
+                      className="light-background"
+                    />
+                  </CInputGroup>
+                  <CRow>
+                    <CCol>
+                      <span
+                        className="login-button-link color-black link-dark"
+                        // onClick={() => openRequestCodeModal()}
+                      ></span>
+                      <div className="d-flex justify-content-center align-items-end flex-column ">
+                        <CButton
+                          //   disabled={isValid}
+                          //   onClick={signInClicked}
+                          className="px-4 mb-4 text-white bg-black position-relative"
+                        >
+                          {isSpinnerVisible ? (
+                            <CSpinner
+                              color="warning"
+                              variant="grow"
+                              size="sm"
+                            />
+                          ) : (
+                            "Log in"
+                          )}
+                        </CButton>
+                      </div>
+                    </CCol>
+                  </CRow>
+                  <CRow>
+                    <CCardBody className="d-flex mb-3">
+                      <span>Are you new?</span>
+                      <span
+                        className="login-button-link px-4 link-dark fw-bolder"
+                        style={{
+                          cursor: "pointer",
+                        }}
+                        onClick={() => openRegisterModal()}
+                      >
+                        Sign up
+                      </span>
+                    </CCardBody>
+                  </CRow>
+                </CForm>
+              </CCardBody>
+            </CCard>
+          </CCol>
+        </CRow>
+      </CModal>
+    </>
+  );
 }

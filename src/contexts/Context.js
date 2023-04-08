@@ -48,11 +48,6 @@ async function getSessionInfo() {
 }
 
 async function signInWithEmail(email, password, setWrongCredentials){
-  const aPromise = new Promise((resolve, reject) => {
-      resolve()
-
-  })
-
 
   await axios.post("http://localhost:3000/login",
       {email: email,

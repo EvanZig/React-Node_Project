@@ -1,150 +1,267 @@
-import React,  { useState, useRef } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button , Form, Container, Card, InputGroup, Modal} from 'react-bootstrap'
-import axios from 'axios';
-import {useFormik} from 'formik'
-import { basicSchema } from './schema';
+import React, { useContext } from "react";
+import { useFormik } from "formik";
+import {
+  CForm,
+  CButton,
+  CFormInput,
+  CInputGroup,
+  CCardBody,
+  CSpinner,
+  CRow,
+  CCol,
+  CModal,
+  CCard,
+} from "@coreui/react";
+import "@coreui/coreui/dist/css/coreui.min.css";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { mySchema, passwordErros } from "../schema/mySchema";
+import signupBackgroundImage from "../images/bg-signup.png";
+import { MainPageContext } from "../contexts/MainPageContext";
+import { cilXCircle } from "@coreui/icons";
+import CIcon from "@coreui/icons-react";
 
-export default function Register(){
+export default function Register() {
+  const modalContext = useContext(MainPageContext);
+  console.log(modalContext.registerModalVisibility);
 
-  const [show, setShow] = useState(false);
+  const onSubmit = (values, actions) => {
+    console.log(values);
+    setTimeout(() => {
+      actions.resetForm();
+    }, 1000);
+  };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const formik = useFormik({
+  const registerForm = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      age: 0,
-      dateOfBirth: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
-    validationSchema: basicSchema,
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    validationSchema: mySchema,
+    onSubmit,
   });
 
+  const isSpinnerVisible = false;
 
-  const [matchingPasswords, setMatchingPasswords] = useState(true)
+  const openLoginModal = () => {
+    // modalContext.setRegisterModalVisibility(false)
+  };
 
-  // const firstNameInput = useRef();
-  // const lastNameInput = useRef();
-  // const ageInput = useRef();
-  // const dateOfBirthInput = useRef();
-  // const emailAddressInput = useRef();
-  const passwordInput = useRef();
-  const passwordConfirm = useRef();
-
-  function handleSubmit(event){
-      event.preventDefault();
-      const data = {
-        // firstname: firstNameInput.current.value,
-        // lastname: lastNameInput.current.value,
-        // age: ageInput.current.value,
-        // dateOfBirth: dateOfBirthInput.current.value,
-        // email: emailAddressInput.current.value,
-        password: passwordInput.current.value,
-      };
-      if(passwordConfirm.current.value !== passwordInput.current.value){
-        setMatchingPasswords(false)
-        return;
-      }
-      console.log(data)
-      axios.post("http://localhost:3000/register", data)
-      .then(response => {
-        console.log(response.data);
-        handleClose()
-      })
-      .catch(error => {
-        console.error(error);
-      })
-      console.log(data);
-  }
-  
-    return (
-        <div>
-          <Form onSubmit={formik.handleSubmit}>
-          <Button variant="primary" onClick={handleShow}>
-          REGISTER
-          </Button>
-
-          <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-          <Modal.Title>registration</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-
-          <Container>
-                <Card className="px-4">
-                  <Card.Body>
-                    <div className="mb-3 mt-md-4">
-                      <h2 className="fw-bold mb-2 text-center text-uppercase ">
-                        REGISTER
-                      </h2>
-                      <div className="mb-3">
-                          <Form.Group className="mb-3" controlId="Firstname">
-                            <Form.Label className="text-center">Firstname</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id ="firstName" name ="firstName" onChange={formik.handleChange} value = {formik.values.firstName} />
-                          </Form.Group>
-
-                          <Form.Group className="mb-3" controlId="Lastname">
-                            <Form.Label className="text-center">Lastname</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" id ="lastName" name ="lastName" onChange={formik.handleChange} value = {formik.values.lastName}/>
-                          </Form.Group>
-
-                          <InputGroup className="mb-3">
-                          <InputGroup.Text>Age</InputGroup.Text>
-                          <Form.Control type="text" id ="age" name ="age" onChange={formik.handleChange} value = {formik.values.age}/>
-                          </InputGroup>
-
-                          <Form.Group className="mb-3">
-                          <Form.Label className="text-center"> Date of birth </Form.Label>
-                          <Form.Control type="date" id ="dateOfBirth" name ="dateOfBirth" onChange={formik.handleChange} value = {formik.values.dateOfBirth}/>
-                          </Form.Group>
-
-                          <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label className="text-center">
-                              Email address
-                            </Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" id ="email" name ="email" onChange={formik.handleChange} value = {formik.values.email}/>
-                          </Form.Group>
-    
-                          <Form.Group className="mb-3" controlId="Password">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" ref={passwordInput} />
-                            <div className ="errorLogin">{matchingPasswords ? "": "passwords dont match"}</div>
-                          </Form.Group>
-
-                          <Form.Group
-                            className="mb-3"
-                            controlId="confirmPassword"
-                          >
-                            <Form.Label>Confirm Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" ref = {passwordConfirm} />
-                            <div className ="errorLogin">{matchingPasswords ? "": "passwords dont match"}</div>
-                          </Form.Group>
-
-                      </div>
+  return (
+    <>
+      <CButton
+        onClick={() => {
+          modalContext.setRegisterModalVisibility(true);
+        }}
+        className="mr-1"
+      >
+        Register
+      </CButton>
+      <div
+        className={`flex-row ${
+          modalContext.registerModalVisibility ? "d-flex" : "d-none"
+        }`}
+      >
+        <CModal
+          className="show d-block spartan-font"
+          backdrop={true}
+          keyboard={false}
+          portal={false}
+          size="xl"
+          visible={modalContext.registerModalVisibility}
+          onClose={() => {
+            modalContext.setRegisterModalVisibility(false);
+          }}
+          alignment="center"
+          style={{
+            backgroundImage: `url(${signupBackgroundImage})`,
+            backgroundSize: `cover`,
+            borderRadius: `0px`,
+          }}
+        >
+          <CRow className="justify-content-center">
+            <CCol></CCol>
+            <CCol className="col-lg-7">
+              <CCard style={{ borderRadius: `0px`, height: "900px" }}>
+                <div className=" d-flex flex-row justify-content-end align-items-end m-3">
+                  <CIcon
+                    role="button"
+                    icon={cilXCircle}
+                    className="icon-xl"
+                    onClick={() => {
+                      modalContext.setRegisterModalVisibility(false);
+                    }}
+                  />
+                </div>
+                <CForm onSubmit={registerForm.handleSubmit}>
+                  <CCardBody className="m-5 p-xl-5">
+                    <div className="d-flex flex-column mb-4">
+                      <h2>Register</h2>
                     </div>
-                  </Card.Body>
-                </Card>
-          </Container>
 
-            </Modal.Body>
-          <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button type="submit" variant="primary" onClick={formik.handleSubmit}>
-            Create Account
-          </Button>
-          </Modal.Footer>
-          </Modal>
-          </Form>
-        </div>
-      );
+                    <CInputGroup className="mb-4">
+                      <CFormInput
+                        placeholder="First name"
+                        // className="light-background"
+                        name="firstName"
+                        value={registerForm.values.firstName}
+                        onChange={registerForm.handleChange}
+                        onBlur={registerForm.handleBlur}
+                        className={
+                          registerForm.errors.firstName &&
+                          registerForm.touched.firstName
+                            ? "input-error"
+                            : ""
+                        }
+                      />
+                    </CInputGroup>
+                    {registerForm.errors.firstName &&
+                      registerForm.touched.firstName && (
+                        <p className="error">
+                          ❌{registerForm.errors.firstName}
+                        </p>
+                      )}
+
+                    <CInputGroup className="mb-4">
+                      <CFormInput
+                        placeholder="Last name"
+                        // className="light-background"
+                        name="lastName"
+                        value={registerForm.values.lastName}
+                        onChange={registerForm.handleChange}
+                        onBlur={registerForm.handleBlur}
+                        className={
+                          registerForm.errors.lastName &&
+                          registerForm.touched.lastName
+                            ? "input-error"
+                            : ""
+                        }
+                      />
+                    </CInputGroup>
+                    {registerForm.errors.lastName &&
+                      registerForm.touched.lastName && (
+                        <p className="error">
+                          ❌{registerForm.errors.lastName}
+                        </p>
+                      )}
+
+                    <CInputGroup className="mb-4">
+                      <CFormInput
+                        type="email"
+                        placeholder="E-mail"
+                        // className="light-background"
+                        name="email"
+                        value={registerForm.values.email}
+                        onChange={registerForm.handleChange}
+                        onBlur={registerForm.handleBlur}
+                        className={
+                          registerForm.errors.email &&
+                          registerForm.touched.email
+                            ? "input-error"
+                            : ""
+                        }
+                      />
+                    </CInputGroup>
+                    {registerForm.errors.email &&
+                      registerForm.touched.email && (
+                        <p className="error">❌{registerForm.errors.email}</p>
+                      )}
+
+                    <CInputGroup className="mb-4">
+                      <CFormInput
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={registerForm.values.password}
+                        onChange={registerForm.handleChange}
+                        onBlur={registerForm.handleBlur}
+                        className={
+                          registerForm.errors.password &&
+                          registerForm.touched.password
+                            ? "input-error"
+                            : ""
+                        }
+                      />
+                    </CInputGroup>
+                    {registerForm.errors.password &&
+                      registerForm.touched.password && (
+                        <p className="error">{passwordErros}</p>
+                      )}
+
+                    <CInputGroup className="mb-4">
+                      <CFormInput
+                        type="password"
+                        placeholder="Confirm Password"
+                        name="confirmPassword"
+                        value={registerForm.values.confirmPassword}
+                        onChange={registerForm.handleChange}
+                        onBlur={registerForm.handleBlur}
+                        className={
+                          registerForm.errors.confirmPassword &&
+                          registerForm.touched.confirmPassword
+                            ? "input-error"
+                            : ""
+                        }
+                      />
+                    </CInputGroup>
+                    {registerForm.errors.confirmPassword &&
+                      registerForm.touched.confirmPassword && (
+                        <p className="error">
+                          ❌{registerForm.errors.confirmPassword}
+                        </p>
+                      )}
+
+                    <CInputGroup className="mb-4">
+                      <PhoneInput country={"ch"} />
+                    </CInputGroup>
+
+                    <CRow>
+                      <CCol>
+                        <div className="d-flex justify-content-center align-items-end flex-column ">
+                          <CButton
+                            disabled={registerForm.isSubmitting}
+                            type="submit"
+                            className="px-4 mb-4 text-white bg-black"
+                          >
+                            {isSpinnerVisible ? (
+                              <CSpinner
+                                color="warning"
+                                variant="grow"
+                                size="sm"
+                              />
+                            ) : (
+                              ""
+                            )}
+                            Register
+                          </CButton>
+                        </div>
+                      </CCol>
+                    </CRow>
+
+                    <CRow>
+                      <CCardBody className="d-flex mb-3">
+                        <span>Already registered?</span>
+                        <span
+                          className="login-button-link px-4 link-dark fw-bolder"
+                          onClick={() => openLoginModal()}
+                          style={{
+                            cursor: "pointer",
+                          }}
+                        >
+                          Login
+                        </span>
+                      </CCardBody>
+                    </CRow>
+                  </CCardBody>
+                </CForm>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CModal>
+      </div>
+    </>
+  );
 }

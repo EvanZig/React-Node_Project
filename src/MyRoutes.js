@@ -4,12 +4,13 @@ import './myCss.css'
 import LoggedInProfile from './loggedin/LoggedInProfile'
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import MainPage from './loggedout/MainPage'
-import { AuthIsNotSignedIn,AuthIsSignedIn, AuthProvider } from './Context'
+import { AuthIsNotSignedIn,AuthIsSignedIn, AuthProvider } from './contexts/Context'
+import MainPageContextWraper from './contexts/MainPageContext'
 
 export const SignInRoute = () => (
     <BrowserRouter>
         <Routes>
-        <Route exact path= "/" element = {<LoggedInProfile />} />
+        <Route exact path= "/" element = {<MainPage />} />
         </Routes>
     </BrowserRouter>
 )
@@ -17,7 +18,7 @@ export const SignInRoute = () => (
 export const MainRoute = () => (
     <BrowserRouter>
         <Routes>
-        <Route exact path= "/" element = {<LoggedInProfile />} > 
+        <Route exact path= "/" element = {<MainPage />} >
         
         </Route>
         </Routes>
@@ -34,19 +35,11 @@ export default function MyRoutes(){
             <SignInRoute />
         </AuthIsSignedIn>
         <AuthIsNotSignedIn>
-            <MainRoute />
+            <MainPageContextWraper>
+                <MainRoute />
+            </MainPageContextWraper>
         </AuthIsNotSignedIn>
         </AuthProvider>
-
-        
-        {/* <BrowserRouter>
-            <Routes>
-            <Route exact path= "/" element = {<MainPage />} />
-            <Route path= "/loggedinprofile" element ={<LoggedInProfile />} />
-            </Routes>
-        </BrowserRouter> */}
-
-
         </>
     )
 }
