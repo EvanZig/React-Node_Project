@@ -48,7 +48,7 @@ export default function Register() {
       email: "",
       password: "",
       confirmPassword: "",
-      phone: +41,
+      phone: "+41",
     },
     validationSchema: mySchema,
     onSubmit,
