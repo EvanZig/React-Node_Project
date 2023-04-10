@@ -17,7 +17,9 @@ export const initializeAxiosMockAdapter = (instance) => {
 export const addUser = (config) => {
   console.log("addUser called with config:", config);
   const user = JSON.parse(config.data);
+  console.log(usersList);
   usersList.push(user);
+  console.log(usersList);
   return [200, user];
 };
 

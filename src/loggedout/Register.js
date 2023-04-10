@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import {
   CForm,
   CButton,
@@ -21,7 +21,6 @@ import { MainPageContext } from "../contexts/MainPageContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { http } from "../config/httpExample";
-import axios from "axios";
 
 export default function Register() {
   const modalContext = useContext(MainPageContext);
@@ -35,10 +34,7 @@ export default function Register() {
       .catch((error) => {
         console.error(error);
       });
-    console.log(values);
-    setTimeout(() => {
-      actions.resetForm();
-    }, 1000);
+    actions.resetForm();
   };
 
   const registerForm = useFormik({

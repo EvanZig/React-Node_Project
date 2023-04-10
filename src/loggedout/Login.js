@@ -18,6 +18,7 @@ import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { useFormik } from "formik";
 import { mySchema } from "../schema/mySchema";
+import { http } from "../config/httpExample";
 
 export default function Login() {
   const modalContext = useContext(MainPageContext);
