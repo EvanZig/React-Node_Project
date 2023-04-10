@@ -1,0 +1,31 @@
+{
+    "users": [{
+        "firstname": "Alice",
+        "lastname": "Smith",
+        "age": 21,
+        "dateOfBirth": "1995-03-15",
+        "email": "alice.smith@example.com"
+        },
+        {
+        "firstname": "Bob",
+        "lastname": "Jones",
+        "age": 37,
+        "dateOfBirth": "1987-10-28",
+        "email": "bob.jones@example.com"
+        },
+        {
+        "firstname": "Emma",
+        "lastname": "Davis",
+        "age": 18,
+        "dateOfBirth": "2000-01-12",
+        "email": "emma.davis@example.com"
+        },
+        {
+        "firstname": "Michael",
+        "lastname": "Wilson",
+        "age": 49,
+        "dateOfBirth": "1981-09-02",
+        "email": "michael.wilson@example.com"
+        }
+    ]
+}
