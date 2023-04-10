@@ -1,31 +1,36 @@
 {
-    "users": [{
-        "firstname": "Alice",
-        "lastname": "Smith",
-        "age": 27,
-        "dateOfBirth": "1995-03-15",
-        "email": "alice.smith@example.com"
+    "users": [
+        {
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": 27,
+            "password": "somePassword#",
+            "confirmPassword": "somePassword#",
+            "phone": "+41791234567"
         },
         {
-        "firstname": "Bob",
-        "lastname": "Jones",
-        "age": 35,
-        "dateOfBirth": "1987-10-28",
-        "email": "bob.jones@example.com"
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": 27,
+            "password": "somePassword#",
+            "confirmPassword": "somePassword#",
+            "phone": "+41767654321 "
         },
         {
-        "firstname": "Emma",
-        "lastname": "Davis",
-        "age": 22,
-        "dateOfBirth": "2000-01-12",
-        "email": "emma.davis@example.com"
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": 27,
+            "password": "somePassword#",
+            "confirmPassword": "somePassword#",
+            "phone": "+41799887766"
         },
         {
-        "firstname": "Michael",
-        "lastname": "Wilson",
-        "age": 41,
-        "dateOfBirth": "1981-09-02",
-        "email": "michael.wilson@example.com"
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": 27,
+            "password": "somePassword#",
+            "confirmPassword": "somePassword#",
+            "phone": "+41763214785"
         }
     ]
 }

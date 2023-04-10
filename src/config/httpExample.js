@@ -1,10 +1,14 @@
 import axios from "axios";
+import { initializeAxiosMockAdapter } from "../mockServer/mockConfig";
 
-export const instance = axios.create({
-  baseURL: "http://localhost:4000",
+// Mock server
+let instance = axios.create({
+  baseURL: "http://localhost:8000",
   headers: {
     "Content-type": "application/json",
   },
 });
 
-export default instance;
+initializeAxiosMockAdapter(instance);
+
+export const http = instance;

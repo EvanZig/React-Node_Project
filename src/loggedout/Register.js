@@ -20,12 +20,21 @@ import signupBackgroundImage from "../images/bg-signup.png";
 import { MainPageContext } from "../contexts/MainPageContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
+import { http } from "../config/httpExample";
+import axios from "axios";
 
 export default function Register() {
   const modalContext = useContext(MainPageContext);
-  console.log(modalContext.registerModalVisibility);
 
   const onSubmit = (values, actions) => {
+    http
+      .post("/register", registerForm.values)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     console.log(values);
     setTimeout(() => {
       actions.resetForm();
