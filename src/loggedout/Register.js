@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useFormik } from "formik";
+import { Formik, useFormik } from "formik";
 import {
   CForm,
   CButton,
@@ -48,11 +48,13 @@ export default function Register() {
       email: "",
       password: "",
       confirmPassword: "",
+      phone: +41,
     },
     validationSchema: mySchema,
     onSubmit,
   });
 
+  console.log(registerForm.values);
   const isSpinnerVisible = false;
 
   const openLoginModal = () => {
@@ -224,8 +226,17 @@ export default function Register() {
                         </p>
                       )}
 
+                    {/* fix so its value is added with formik */}
                     <CInputGroup className="mb-4">
-                      <PhoneInput country={"ch"} />
+                      <PhoneInput
+                        country={"ch"}
+                        name="phone"
+                        value={registerForm.values.phone}
+                        onChange={(phone) =>
+                          registerForm.setFieldValue("phone", phone)
+                        }
+                        onBlur={registerForm.handleBlur}
+                      />
                     </CInputGroup>
 
                     <CRow>
