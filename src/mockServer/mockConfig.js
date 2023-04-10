@@ -11,10 +11,11 @@ let usersList = data.users;
 export const initializeAxiosMockAdapter = (instance) => {
   //product related
   const mock = new MockAdapter(instance);
-  mock.onGet("/register").reply((config) => addUser());
+  mock.onPost("/register").reply((config) => addUser(config));
 };
 
 export const addUser = (config) => {
+  console.log("addUser called with config:", config);
   const user = JSON.parse(config.data);
   usersList.push(user);
   return [200, user];

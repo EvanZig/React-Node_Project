@@ -28,7 +28,7 @@ export default function Register() {
 
   const onSubmit = (values, actions) => {
     http
-      .post("/register", registerForm.values)
+      .post("/register", values)
       .then((response) => {
         console.log(response.data);
       })
@@ -54,7 +54,6 @@ export default function Register() {
     onSubmit,
   });
 
-  console.log(registerForm.values);
   const isSpinnerVisible = false;
 
   const openLoginModal = () => {
