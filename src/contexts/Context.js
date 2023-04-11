@@ -68,6 +68,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("idToken", idToken);
         localStorage.setItem("refreshToken", refreshToken);
         setAuthStatus("LoggedIn");
+        console.log("success");
       })
       .catch((error) => {
         console.error(error);

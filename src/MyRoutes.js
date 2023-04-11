@@ -14,7 +14,7 @@ import MainPageContextWraper from "./contexts/MainPageContext";
 export const SignInRoute = () => (
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<MainPage />} />
+      <Route exact path="/" element={<LoggedInProfile />} />
     </Routes>
   </BrowserRouter>
 );

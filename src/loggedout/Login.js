@@ -20,7 +20,6 @@ import { useFormik } from "formik";
 import { mySchema } from "../schema/mySchema";
 import { http } from "../config/httpExample";
 import { AuthContext } from "../contexts/Context";
-import e from "cors";
 
 export default function Login() {
   const modalContext = useContext(MainPageContext);
@@ -35,7 +34,6 @@ export default function Login() {
       values.password,
       setWrongCredentials
     );
-    console.log(values);
     setTimeout(() => {
       actions.resetForm();
     }, 1000);
