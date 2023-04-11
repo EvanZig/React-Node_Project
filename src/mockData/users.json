@@ -9,28 +9,28 @@
             "phone": "+41791234567"
         },
         {
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": 27,
-            "password": "somePassword#",
-            "confirmPassword": "somePassword#",
-            "phone": "+41767654321 "
+            "firstName": "Bob",
+            "lastName": "Jones",
+            "email": "bob.jones@example.com",
+            "password": "mySecurePassword123",
+            "confirmPassword": "mySecurePassword123",
+            "phone": "+14155552671"
         },
         {
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": 27,
-            "password": "somePassword#",
-            "confirmPassword": "somePassword#",
-            "phone": "+41799887766"
+            "firstName": "Jennifer",
+            "lastName": "Lee",
+            "email": "jennifer.lee@example.com",
+            "password": "s0mep@ssword!",
+            "confirmPassword": "s0mep@ssword!",
+            "phone": "+61423123456"
         },
         {
-            "firstName": "Alice",
-            "lastName": "Smith",
-            "email": 27,
-            "password": "somePassword#",
-            "confirmPassword": "somePassword#",
-            "phone": "+41763214785"
+            "firstName": "David",
+            "lastName": "Garcia",
+            "email": "david.garcia@example.com",
+            "password": "secur3p@ss",
+            "confirmPassword": "secur3p@ss",
+            "phone": "+85291234567"
         }
     ]
 }

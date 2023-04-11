@@ -9,13 +9,14 @@ import MockAdapter from "axios-mock-adapter";
 let usersList = data.users;
 
 export const initializeAxiosMockAdapter = (instance) => {
-  //product related
   const mock = new MockAdapter(instance);
   mock.onPost("/register").reply((config) => addUser(config));
+  mock.onPut("/update").reply((config) => updateUser(config));
+  mock.onGet("/show").reply((config) => showUsers(config));
+  mock.onDelete("/delete").reply((config) => deleteUser(config));
 };
 
 export const addUser = (config) => {
-  console.log("addUser called with config:", config);
   const user = JSON.parse(config.data);
   console.log(usersList);
   usersList.push(user);
@@ -23,17 +24,17 @@ export const addUser = (config) => {
   return [200, user];
 };
 
-export const showUsers = () => {};
+export const showUsers = () => {
+  return [200, usersList];
+};
 
 export const deleteUser = (config) => {
-  // const user =
-  //   return [200, user];
+  console.log("deleted");
+  return [200, null];
 };
 
 export const updateUser = (config) => {
-  //   const id = extractIdPathParamFromUrl(config);
-  //   const userIndex = usersList.findIndex((c) => c.id === id);
-  //   const user = JSON.parse(config.data);
-  //   countriesList[userIndex] = user;
-  //   return [200, user];
+  const user = JSON.parse(config.data);
+  // console.log(user);
+  return [200, user];
 };

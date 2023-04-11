@@ -3,6 +3,7 @@ import { Form, Button, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { http } from "../config/httpExample";
 
 export default function UpdateProfile() {
   const headers = {
@@ -22,19 +23,21 @@ export default function UpdateProfile() {
 
   const handleChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
-    console.log(userData);
   };
 
   const handleSubmit = async (e) => {
     console.log(userData);
     e.preventDefault();
     try {
-      const response = await axios.put(
-        "http://localhost:3000/loggedin/update",
-        userData,
-        { headers }
-      );
-      console.log(response.data);
+      // const response = await axios.put(
+      //   "http://localhost:3000/loggedin/update",
+      //   userData,
+      //   { headers }
+      // );
+      // console.log(response.data);
+      http.put("/update", userData).then((response) => {
+        console.log(response.data);
+      });
     } catch (error) {
       console.log(error);
     }
