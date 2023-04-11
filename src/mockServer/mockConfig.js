@@ -43,7 +43,6 @@ export const updateUser = (config) => {
 export const giveTokens = (config) => {
   const { email, password } = JSON.parse(config.data);
 
-  // Loop through the users list and check if the email and password match
   let matchedUser;
   usersList.forEach((user) => {
     if (user.email === email && user.password === password) {
@@ -51,7 +50,6 @@ export const giveTokens = (config) => {
     }
   });
 
-  // If a match is found, return a 200 status code with a mock response containing the user's email, access token, and refresh token
   if (matchedUser) {
     return [
       200,
@@ -62,6 +60,5 @@ export const giveTokens = (config) => {
     ];
   }
 
-  // If no match is found, return a 401 status code with an error message
   return [401, { message: "Invalid email or password" }];
 };
