@@ -22,7 +22,7 @@ export const SignInRoute = () => (
 export const MainRoute = () => (
   <BrowserRouter>
     <Routes>
-      <Route exact path="/" element={<LoggedInProfile />}></Route>
+      <Route exact path="/" element={<MainPage />}></Route>
     </Routes>
   </BrowserRouter>
 );

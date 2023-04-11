@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   CForm,
   CButton,
@@ -19,12 +19,22 @@ import CIcon from "@coreui/icons-react";
 import { useFormik } from "formik";
 import { mySchema } from "../schema/mySchema";
 import { http } from "../config/httpExample";
+import { AuthContext } from "../contexts/Context";
+import e from "cors";
 
 export default function Login() {
   const modalContext = useContext(MainPageContext);
   const isSpinnerVisible = false;
+  const authContext = useContext(AuthContext);
+  const [wrongCredentials, setWrongCredentials] = useState(false);
 
-  const onSubmit = (values, actions) => {
+  const onSubmit = (event, values, actions) => {
+    event.preventDefault();
+    authContext.signInWithEmail(
+      values.email,
+      values.password,
+      setWrongCredentials
+    );
     console.log(values);
     setTimeout(() => {
       actions.resetForm();
@@ -34,6 +44,7 @@ export default function Login() {
   const loginForm = useFormik({
     initialValues: {
       email: "",
+      password: "",
     },
     validationSchema: mySchema,
     onSubmit,
@@ -85,7 +96,12 @@ export default function Login() {
                 <div className="d-flex flex-column mb-4">
                   <h2>Log in</h2>
                 </div>
-                <CForm id="main">
+                <CForm
+                  id="main"
+                  onSubmit={(event) =>
+                    onSubmit(event, loginForm.values, loginForm.actions)
+                  }
+                >
                   <CInputGroup className="mb-4">
                     <CFormInput
                       placeholder="E-mail"
@@ -104,9 +120,20 @@ export default function Login() {
                     <CFormInput
                       type="password"
                       placeholder="Password"
-                      className="light-background"
+                      name="password"
+                      value={loginForm.values.password}
+                      onChange={loginForm.handleChange}
+                      onBlur={loginForm.handleBlur}
+                      className={
+                        loginForm.errors.password && loginForm.touched.password
+                          ? "input-error"
+                          : ""
+                      }
                     />
                   </CInputGroup>
+                  {wrongCredentials ? (
+                    <span className="errorLogin">wrong password or email</span>
+                  ) : null}
                   <CRow>
                     <CCol>
                       <span
@@ -115,6 +142,7 @@ export default function Login() {
                       ></span>
                       <div className="d-flex justify-content-center align-items-end flex-column ">
                         <CButton
+                          type="submit"
                           //   disabled={isValid}
                           //   onClick={signInClicked}
                           className="px-4 mb-4 text-white bg-black position-relative"

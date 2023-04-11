@@ -14,6 +14,7 @@ export const initializeAxiosMockAdapter = (instance) => {
   mock.onPut("/update").reply((config) => updateUser(config));
   mock.onGet("/show").reply((config) => showUsers(config));
   mock.onDelete("/delete").reply((config) => deleteUser(config));
+  mock.onPost("/login").reply((config) => giveTokens(config));
 };
 
 export const addUser = (config) => {
@@ -39,7 +40,7 @@ export const updateUser = (config) => {
   return [200, user];
 };
 
-const giveTokens = (config) => {
+export const giveTokens = (config) => {
   const { email, password } = JSON.parse(config.data);
 
   // Loop through the users list and check if the email and password match
@@ -55,8 +56,7 @@ const giveTokens = (config) => {
     return [
       200,
       {
-        email: matchedUser.email,
-        accessToken: "mockAccessToken",
+        idToken: "mockIdToken",
         refreshToken: "mockRefreshToken",
       },
     ];

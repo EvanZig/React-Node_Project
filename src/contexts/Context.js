@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { http } from "../config/httpExample";
 
 //Defining default state and creating it
 const defaultState = {
@@ -47,8 +48,21 @@ export const AuthProvider = ({ children }) => {
   }
 
   async function signInWithEmail(email, password, setWrongCredentials) {
-    await axios
-      .post("http://localhost:3000/login", { email: email, password: password })
+    // await axios
+    //   .post("http://localhost:3000/login", { email: email, password: password })
+    //   .then((response) => {
+    //     const { idToken, refreshToken } = response.data;
+    //     localStorage.setItem("idToken", idToken);
+    //     localStorage.setItem("refreshToken", refreshToken);
+    //     setAuthStatus("LoggedIn");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     setWrongCredentials(true);
+    //   });
+
+    await http
+      .post("/login", { email: email, password: password })
       .then((response) => {
         const { idToken, refreshToken } = response.data;
         localStorage.setItem("idToken", idToken);
