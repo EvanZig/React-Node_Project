@@ -22,7 +22,13 @@ export const addUser = (config) => {
   console.log(usersList);
   usersList.push(user);
   console.log(usersList);
-  return [200, user];
+  return [
+    200,
+    {
+      idToken: "mockIdToken",
+      refreshToken: "mockRefreshToken",
+    },
+  ];
 };
 
 export const showUsers = () => {

@@ -31,7 +31,9 @@ export default function Register() {
     http
       .post("/register", values)
       .then((response) => {
-        console.log(response.data);
+        const { idToken, refreshToken } = response.data;
+        localStorage.setItem("idToken", idToken);
+        localStorage.setItem("refreshToken", refreshToken);
         authContext.setAuthStatus("LoggedIn");
       })
       .catch((error) => {
