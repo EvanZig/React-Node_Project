@@ -35,9 +35,9 @@ export const deleteUser = (config) => {
 };
 
 export const updateUser = (config) => {
-  const user = JSON.parse(config.data);
-  // console.log(user);
-  return [200, user];
+  const updatedUserData = JSON.parse(config.data);
+  // const user = {...currentUserData, ...updatedUserData}
+  // return [200, user];
 };
 
 export const giveTokens = (config) => {

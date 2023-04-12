@@ -1,4 +1,4 @@
-make register sign in
 delete sign signOut 
 udpate check
 Show if it shows the currect user as well from register
+make phone schema 10 digit min

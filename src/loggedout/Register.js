@@ -21,15 +21,18 @@ import { MainPageContext } from "../contexts/MainPageContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { http } from "../config/httpExample";
+import { AuthContext } from "../contexts/Context";
 
 export default function Register() {
   const modalContext = useContext(MainPageContext);
+  const authContext = useContext(AuthContext);
 
   const onSubmit = (values, actions) => {
     http
       .post("/register", values)
       .then((response) => {
         console.log(response.data);
+        authContext.setAuthStatus("LoggedIn");
       })
       .catch((error) => {
         console.error(error);

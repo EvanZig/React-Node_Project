@@ -35,7 +35,7 @@ export default function UpdateProfile() {
       //   { headers }
       // );
       // console.log(response.data);
-      http.put("/update", userData).then((response) => {
+      http.put("/update", userData, { headers }).then((response) => {
         console.log(response.data);
       });
     } catch (error) {

@@ -33,7 +33,7 @@ export default function DeleteProfile() {
     //   });
 
     http
-      .delete("/delete")
+      .delete("/delete", {}, { headers })
       .then((response) => {
         console.log("User deleted successfully:", response.data);
         setIsDeleting(false);
