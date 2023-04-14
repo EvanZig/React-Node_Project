@@ -7,6 +7,8 @@ import MockAdapter from "axios-mock-adapter";
  */
 
 let usersList = data.users;
+let currentUser;
+let userIndex;
 
 export const initializeAxiosMockAdapter = (instance) => {
   const mock = new MockAdapter(instance);
@@ -19,9 +21,11 @@ export const initializeAxiosMockAdapter = (instance) => {
 
 export const addUser = (config) => {
   const user = JSON.parse(config.data);
+  currentUser = user.email;
   console.log(usersList);
   usersList.push(user);
   console.log(usersList);
+  userIndex = usersList.findIndex((user) => user.email === currentUser);
   return [
     200,
     {
@@ -36,14 +40,16 @@ export const showUsers = () => {
 };
 
 export const deleteUser = (config) => {
-  console.log("deleted");
+  usersList.splice(userIndex, 1);
+  console.log(usersList);
   return [200, null];
 };
 
 export const updateUser = (config) => {
   const updatedUserData = JSON.parse(config.data);
-  // const user = {...currentUserData, ...updatedUserData}
-  // return [200, user];
+  usersList[userIndex] = updatedUserData;
+  console.log(usersList);
+  return [200, currentUser];
 };
 
 export const giveTokens = (config) => {
@@ -53,6 +59,9 @@ export const giveTokens = (config) => {
   usersList.forEach((user) => {
     if (user.email === email && user.password === password) {
       matchedUser = user;
+      currentUser = user.email;
+      userIndex = usersList.findIndex((user) => user.email === currentUser);
+      console.log(currentUser);
     }
   });
 

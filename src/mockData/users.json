@@ -3,7 +3,7 @@
         {
             "firstName": "Alice",
             "lastName": "Smith",
-            "email": 27,
+            "email": "alice.smith@example.com",
             "password": "somePassword#",
             "confirmPassword": "somePassword#",
             "phone": "+41791234567"

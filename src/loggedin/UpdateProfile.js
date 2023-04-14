@@ -91,7 +91,13 @@ export default function UpdateProfile() {
 
       <Form.Group className="mb-3" controlId="confirmPassword">
         <Form.Label>Confirm Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control
+          type="password"
+          placeholder="confirmPassword"
+          name="confirmPassword"
+          value={userData.confirmPassword}
+          onChange={handleChange}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="phone">
