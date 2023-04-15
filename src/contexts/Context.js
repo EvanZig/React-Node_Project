@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   async function signInWithEmail(email, password, setWrongCredentials) {
+    // new axios calls will be created
     // await axios
     //   .post("http://localhost:3000/login", { email: email, password: password })
     //   .then((response) => {
