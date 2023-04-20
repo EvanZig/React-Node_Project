@@ -6,6 +6,15 @@ const registerRouter = require("./userApiCalls/register");
 const bodyParser = require("body-parser");
 const app = express();
 
+//so i can run my front end at the same time
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const mysql = require("mysql2");
@@ -25,7 +34,7 @@ connection.connect((error) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("hi");
+  res.send("main page");
 });
 
 app.use("/delete", deleteRouter);
