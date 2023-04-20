@@ -1,15 +1,17 @@
 const express = require("express");
-const deleteRouter = require("./apiCalls/delete");
-const showRouter = require("./apiCalls/show");
-const updateRouter = require("./apiCalls/update");
-const registerRouter = require("./apiCalls/register");
+const deleteRouter = require("./userApiCalls/delete");
+const showRouter = require("./userApiCalls/show");
+const updateRouter = require("./userApiCalls/update");
+const registerRouter = require("./userApiCalls/register");
 const bodyParser = require("body-parser");
 const app = express();
+
+app.use(bodyParser.json());
 
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "localhost",
-  database: "",
+  database: "mydb",
   user: "root",
   password: "123456",
 });
@@ -19,12 +21,10 @@ connection.connect((error) => {
     console.error("Failed to connect to the MySQL database:", error);
   } else {
     console.log("Connected to the MySQL database!");
-    // Perform your database queries here...
   }
 });
 
 app.get("/", (req, res) => {
-  console.log("Nah");
   res.send("hi");
 });
 
