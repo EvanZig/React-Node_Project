@@ -22,23 +22,28 @@ import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { http } from "../config/httpExample";
 import { AuthContext } from "../contexts/Context";
+import axios from "axios";
 
 export default function Register() {
   const modalContext = useContext(MainPageContext);
   const authContext = useContext(AuthContext);
 
   const onSubmit = (values, actions) => {
-    http
-      .post("/register", values)
-      .then((response) => {
-        const { idToken, refreshToken } = response.data;
-        localStorage.setItem("idToken", idToken);
-        localStorage.setItem("refreshToken", refreshToken);
-        authContext.setAuthStatus("LoggedIn");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    axios.post("http://localhost:5000/register").then((response) => {
+      authContext.setAuthStatus("LoggedIn");
+    });
+
+    // http
+    //   .post("/register", values)
+    //   .then((response) => {
+    //     const { idToken, refreshToken } = response.data;
+    //     localStorage.setItem("idToken", idToken);
+    //     localStorage.setItem("refreshToken", refreshToken);
+    //     authContext.setAuthStatus("LoggedIn");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
     actions.resetForm();
   };
 
