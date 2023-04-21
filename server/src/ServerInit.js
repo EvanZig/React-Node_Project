@@ -17,21 +17,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const mysql = require("mysql2");
-const connection = mysql.createConnection({
-  host: "localhost",
-  database: "mydb",
-  user: "root",
-  password: "123456",
-});
-
-connection.connect((error) => {
-  if (error) {
-    console.error("Failed to connect to the MySQL database:", error);
-  } else {
-    console.log("Connected to the MySQL database!");
-  }
-});
+const getConnection = require("./getConnection");
 
 app.get("/", (req, res) => {
   res.send("main page");
@@ -45,3 +31,7 @@ app.use("/register", registerRouter);
 app.listen(process.env.PORT || 5000, () =>
   console.log("App available at http://localhost:5000")
 );
+
+module.exports = {
+  getConnection: getConnection,
+};
