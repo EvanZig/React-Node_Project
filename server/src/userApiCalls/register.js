@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
 
   try {
     const connection = await getConnection();
-    const result = await connection.execute(query, [
+    await connection.execute(query, [
       firstName,
       lastName,
       email,
