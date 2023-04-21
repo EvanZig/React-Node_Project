@@ -32,6 +32,4 @@ app.listen(process.env.PORT || 5000, () =>
   console.log("App available at http://localhost:5000")
 );
 
-module.exports = {
-  getConnection: getConnection,
-};
+module.exports = { getConnection };
