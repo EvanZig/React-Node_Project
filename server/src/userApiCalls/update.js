@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+router.use(express.json());
 
-router.get("/", (req, res) => {
+router.put("/", (req, res) => {
   res.send("update smth");
 });
 
