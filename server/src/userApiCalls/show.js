@@ -9,10 +9,10 @@ router.get("/", async (req, res) => {
     connection.query("SELECT * FROM users", function (error, results, fields) {
       if (error) throw error;
       const users = JSON.stringify(results);
-      res.json(users);
+      res.status(200).json(users);
     });
 
-    res.sendStatus(200);
+    // res.sendStatus(200);
     connection.release();
   } catch (error) {
     console.error(error);
