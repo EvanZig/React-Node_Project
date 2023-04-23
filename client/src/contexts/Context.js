@@ -54,13 +54,14 @@ export const AuthProvider = ({ children }) => {
         const { idToken, refreshToken } = response.data;
         localStorage.setItem("idToken", idToken);
         localStorage.setItem("refreshToken", refreshToken);
-        console.log("yo");
         setAuthStatus("LoggedIn");
       })
       .catch((error) => {
         console.error(error);
         setWrongCredentials(true);
       });
+
+    //request for mock server
 
     // await http
     //   .post("/login", { email: email, password: password })

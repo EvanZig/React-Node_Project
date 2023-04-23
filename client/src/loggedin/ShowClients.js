@@ -8,23 +8,26 @@ export default function ShowClients() {
   const [clientsData, setClientsData] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:3000/loggedin/showusers")
+    axios
+      .get("http://localhost:5000/show")
+      .then((response) => {
+        console.log(response.data);
+        const parsedData = JSON.parse(response.data);
+        setClientsData(parsedData);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    // http
+    //   .get("/show")
     //   .then((response) => {
+    //     console.log(response.data);
     //     setClientsData(response.data);
     //   })
     //   .catch((error) => {
     //     console.error(error);
     //   });
-    http
-      .get("/show")
-      .then((response) => {
-        console.log(response.data);
-        setClientsData(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }, []);
 
   return (
@@ -41,11 +44,11 @@ export default function ShowClients() {
       <tbody>
         {clientsData.map((item) => (
           <tr key={item.id}>
-            <td>{item.firstName}</td>
-            <td>{item.lastName}</td>
+            <td>{item.firstname}</td>
+            <td>{item.lastname}</td>
             <td>{item.email}</td>
             <td>{item.password}</td>
-            <td>{item.confirmPassword}</td>
+            <td>{item.password}</td>
           </tr>
         ))}
       </tbody>

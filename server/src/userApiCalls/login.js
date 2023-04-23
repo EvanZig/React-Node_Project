@@ -6,13 +6,14 @@ const jwt = require("jsonwebtoken");
 const getConnection = require("../getConnection");
 
 router.post("/", async (req, res) => {
+  let connection;
   try {
     const query = `SELECT * FROM users
                WHERE email = ? AND password = ?`;
 
     const email = req.body.email;
     const values = [email, req.body.password];
-    const connection = await getConnection();
+    connection = await getConnection();
     connection.execute(query, values, function (error, results, fields) {
       if (error) throw error;
 
@@ -26,10 +27,13 @@ router.post("/", async (req, res) => {
         res.status(400).send("Invalid email or password");
       }
     });
-    connection.release();
   } catch (error) {
     console.error(error);
     res.sendStatus(400);
+  } finally {
+    if (connection) {
+      connection.release();
+    }
   }
 });
 

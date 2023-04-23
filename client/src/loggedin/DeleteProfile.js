@@ -20,20 +20,8 @@ export default function DeleteProfile() {
   const handleDelete = (event) => {
     event.preventDefault();
     setIsDeleting(true);
-    // axios
-    //   .delete("http://localhost:3000/loggedin/delete", {}, { headers })
-    //   .then((response) => {
-    //     console.log("User deleted successfully:", response.data);
-    //     setIsDeleting(false);
-    //     authContext.setAuthStatus("LoggedOut");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error deleting user:", error);
-    //     setIsDeleting(false);
-    //   });
-
-    http
-      .delete("/delete", {}, { headers })
+    axios
+      .delete("http://localhost:5000/delete", { headers })
       .then((response) => {
         console.log("User deleted successfully:", response.data);
         setIsDeleting(false);
@@ -43,6 +31,18 @@ export default function DeleteProfile() {
         console.error("Error deleting user:", error);
         setIsDeleting(false);
       });
+
+    // http
+    //   .delete("/delete", {}, { headers })
+    //   .then((response) => {
+    //     console.log("User deleted successfully:", response.data);
+    //     setIsDeleting(false);
+    //     authContext.setAuthStatus("LoggedOut");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error deleting user:", error);
+    //     setIsDeleting(false);
+    //   });
   };
 
   return (

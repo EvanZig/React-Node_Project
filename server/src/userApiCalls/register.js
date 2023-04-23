@@ -12,8 +12,9 @@ router.post("/", async (req, res) => {
   const query = `INSERT INTO users (firstname,lastname,email,phone,password)
   VALUES (?,?,?,?,?)`;
 
+  let connection;
   try {
-    const connection = await getConnection();
+    connection = await getConnection();
     await connection.execute(query, [
       firstName,
       lastName,
@@ -25,10 +26,13 @@ router.post("/", async (req, res) => {
     const idToken = jwt.sign(email, process.env.ID_TOKEN_SECRET);
     const refreshToken = jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
     res.status(200).json({ idToken: idToken, refreshToken: refreshToken });
-    connection.release();
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
+  } finally {
+    if (connection) {
+      connection.release();
+    }
   }
 });
 

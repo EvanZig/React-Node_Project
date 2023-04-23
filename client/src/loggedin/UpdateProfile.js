@@ -29,15 +29,15 @@ export default function UpdateProfile() {
     console.log(userData);
     e.preventDefault();
     try {
-      // const response = await axios.put(
-      //   "http://localhost:3000/loggedin/update",
-      //   userData,
-      //   { headers }
-      // );
-      // console.log(response.data);
-      http.put("/update", userData, { headers }).then((response) => {
-        console.log(response.data);
-      });
+      const response = await axios.put(
+        "http://localhost:5000/update",
+        userData,
+        { headers }
+      );
+      console.log(response.data);
+      // http.put("/update", userData, { headers }).then((response) => {
+      //   console.log(response.data);
+      // });
     } catch (error) {
       console.log(error);
     }

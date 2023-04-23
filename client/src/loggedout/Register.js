@@ -29,9 +29,17 @@ export default function Register() {
   const authContext = useContext(AuthContext);
 
   const onSubmit = (values, actions) => {
-    axios.post("http://localhost:5000/register").then((response) => {
-      authContext.setAuthStatus("LoggedIn");
-    });
+    axios
+      .post("http://localhost:5000/register", values)
+      .then((response) => {
+        const { idToken, refreshToken } = response.data;
+        localStorage.setItem("idToken", idToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        authContext.setAuthStatus("LoggedIn");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     // http
     //   .post("/register", values)

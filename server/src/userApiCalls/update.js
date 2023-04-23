@@ -5,6 +5,7 @@ const authToken = require("../authorization/authTokens");
 const getConnection = require("../getConnection");
 
 router.put("/", authToken, async (req, res) => {
+  let connection;
   try {
     const query = `UPDATE users
                SET firstname = ?,
@@ -15,15 +16,16 @@ router.put("/", authToken, async (req, res) => {
                WHERE email = ?`;
 
     const values = [
-      req.body.firstName,
-      req.body.lastName,
+      req.body.firstname,
+      req.body.lastname,
       req.body.phone,
       req.body.password,
       req.body.email,
-      req.user.email,
+      req.user,
     ];
 
-    const connection = await getConnection();
+    console.log(values);
+    connection = await getConnection();
     connection.execute(query, values, function (error, results, fields) {
       if (error) throw error;
       console.log("User updated successfully");
@@ -33,6 +35,10 @@ router.put("/", authToken, async (req, res) => {
   } catch (error) {
     console.error(error);
     res.sendStatus(500);
+  } finally {
+    if (connection) {
+      connection.release();
+    }
   }
 });
 
