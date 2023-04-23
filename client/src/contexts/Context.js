@@ -48,33 +48,33 @@ export const AuthProvider = ({ children }) => {
   }
 
   async function signInWithEmail(email, password, setWrongCredentials) {
-    // new axios calls will be created
-    // await axios
-    //   .post("http://localhost:3000/login", { email: email, password: password })
-    //   .then((response) => {
-    //     const { idToken, refreshToken } = response.data;
-    //     localStorage.setItem("idToken", idToken);
-    //     localStorage.setItem("refreshToken", refreshToken);
-    //     setAuthStatus("LoggedIn");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     setWrongCredentials(true);
-    //   });
-
-    await http
-      .post("/login", { email: email, password: password })
+    await axios
+      .post("http://localhost:5000/login", { email: email, password: password })
       .then((response) => {
         const { idToken, refreshToken } = response.data;
         localStorage.setItem("idToken", idToken);
         localStorage.setItem("refreshToken", refreshToken);
+        console.log("yo");
         setAuthStatus("LoggedIn");
-        console.log("success");
       })
       .catch((error) => {
         console.error(error);
         setWrongCredentials(true);
       });
+
+    // await http
+    //   .post("/login", { email: email, password: password })
+    //   .then((response) => {
+    //     const { idToken, refreshToken } = response.data;
+    //     localStorage.setItem("idToken", idToken);
+    //     localStorage.setItem("refreshToken", refreshToken);
+    //     setAuthStatus("LoggedIn");
+    //     console.log("success");
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //     setWrongCredentials(true);
+    //   });
   }
 
   async function logout() {

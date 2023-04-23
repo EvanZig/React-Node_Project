@@ -15,10 +15,18 @@ router.post("/", async (req, res) => {
     const connection = await getConnection();
     connection.execute(query, values, function (error, results, fields) {
       if (error) throw error;
+
+      if (results.length > 0) {
+        console.log("Login successful");
+        const idToken = jwt.sign(email, process.env.ID_TOKEN_SECRET);
+        const refreshToken = jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
+        res.status(200).json({ idToken: idToken, refreshToken: refreshToken });
+      } else {
+        console.log("Login failed");
+        res.status(400).send("Invalid email or password");
+      }
     });
-    const idToken = jwt.sign(email, process.env.ID_TOKEN_SECRET);
-    const refreshToken = jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
-    res.status(200).json({ idToken: idToken, refreshToken: refreshToken });
+    connection.release();
   } catch (error) {
     console.error(error);
     res.sendStatus(400);
