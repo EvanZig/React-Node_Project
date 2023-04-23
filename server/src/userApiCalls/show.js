@@ -10,8 +10,6 @@ router.get("/", async (req, res) => {
       const users = JSON.stringify(results);
       res.status(200).json(users);
     });
-
-    // res.sendStatus(200);
     connection.release();
   } catch (error) {
     console.error(error);

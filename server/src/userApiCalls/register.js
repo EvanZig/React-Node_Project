@@ -1,3 +1,6 @@
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+const jwt = require("jsonwebtoken");
 const express = require("express");
 const router = express.Router();
 const getConnection = require("../getConnection");
@@ -19,7 +22,9 @@ router.post("/", async (req, res) => {
       password,
     ]);
     console.log("Data inserted successfully");
-    res.sendStatus(200);
+    const idToken = jwt.sign(email, process.env.ID_TOKEN_SECRET);
+    const refreshToken = jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
+    res.status(200).json({ idToken: idToken, refreshToken: refreshToken });
     connection.release();
   } catch (err) {
     console.error(err);
