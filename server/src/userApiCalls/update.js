@@ -21,7 +21,7 @@ router.put("/", authToken, async (req, res) => {
       req.body.phone,
       req.body.password,
       req.body.email,
-      req.user,
+      req.user.email,
     ];
 
     console.log(values);

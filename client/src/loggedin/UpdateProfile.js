@@ -9,7 +9,7 @@ export default function UpdateProfile() {
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${localStorage.getItem("idToken")}`,
-    "Refresh-Token": localStorage.getItem("refreshToken"),
+    RefreshToken: localStorage.getItem("refreshToken"),
   };
 
   const [userData, setUserData] = useState({
