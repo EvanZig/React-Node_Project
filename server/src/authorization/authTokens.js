@@ -38,7 +38,3 @@ const authToken = (req, res, next) => {
 };
 
 module.exports = authToken;
-
-// return res.sendStatus(403);
-//     req.user = user;
-//     next();
