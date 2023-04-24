@@ -19,8 +19,16 @@ router.post("/", async (req, res) => {
 
       if (results.length > 0) {
         console.log("Login successful");
-        const idToken = jwt.sign(email, process.env.ID_TOKEN_SECRET);
-        const refreshToken = jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
+        const idToken = jwt.sign({ email }, process.env.ID_TOKEN_SECRET, {
+          expiresIn: "10s",
+        });
+        const refreshToken = jwt.sign(
+          { email },
+          process.env.REFRESH_TOKEN_SECRET,
+          {
+            expiresIn: "7d",
+          }
+        );
         res.status(200).json({ idToken: idToken, refreshToken: refreshToken });
       } else {
         console.log("Login failed");
