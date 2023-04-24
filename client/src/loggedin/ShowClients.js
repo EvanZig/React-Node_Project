@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 
 export default function ShowClients() {
   const [clientsData, setClientsData] = useState([]);

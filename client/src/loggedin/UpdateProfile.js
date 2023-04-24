@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Form, Button, InputGroup } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 
 export default function UpdateProfile() {
   const headers = {

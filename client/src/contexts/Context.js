@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 
 //Defining default state and creating it
 const defaultState = {

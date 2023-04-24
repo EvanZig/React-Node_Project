@@ -18,7 +18,7 @@ import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { useFormik } from "formik";
 import { mySchema } from "../schema/mySchema";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 import { AuthContext } from "../contexts/Context";
 
 export default function Login() {

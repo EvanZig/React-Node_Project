@@ -20,7 +20,7 @@ import signupBackgroundImage from "../images/bg-signup.png";
 import { MainPageContext } from "../contexts/MainPageContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 import { AuthContext } from "../contexts/Context";
 import axios from "axios";
 

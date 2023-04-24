@@ -1,9 +1,9 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { AuthContext } from "../contexts/Context";
-import { http } from "../config/httpExample";
+// import { http } from "../config/httpExample";
 
 export default function DeleteProfile() {
   const headers = {
@@ -15,7 +15,6 @@ export default function DeleteProfile() {
   const authContext = useContext(AuthContext);
 
   const [isDeleting, setIsDeleting] = useState(false);
-  const idDelete = useRef();
 
   const handleDelete = (event) => {
     event.preventDefault();
