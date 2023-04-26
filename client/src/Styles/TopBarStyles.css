@@ -36,19 +36,24 @@
     padding-left: 30px;
   }
 
+
+
+  .newToCompany{
+    text-align: center;
+    font-size:16px;
+    font-weight: 400;
+    margin-top: 20px;
+  }
+
+  .dropdown-divider{
+    margin: 20px;
+  }
+
   .filter-prefix {
     background-image: url(../images/svgs/funnel.svg);
     background-repeat: no-repeat;
     background-position: 5px center;
     padding-left: 30px;
-  }
-
-
-
-
-  .disabled-item{
-    pointer-events: none;
-    text-align: center;
   }
 
   .button-parent{

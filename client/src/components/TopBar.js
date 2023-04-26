@@ -88,10 +88,8 @@ export default function TopBar() {
                   </span>{" "}
                   to see your favorites
                 </CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#" className="disabled-item" disabled>
-                  New to this company?
-                </CDropdownItem>
+                <CDropdownDivider className="dropdown-divider" />
+                <div class="newToCompany">New to this company?</div>
                 <CDropdownItem href="#" className="hover-none button-parent">
                   <CButton
                     color="dark"
