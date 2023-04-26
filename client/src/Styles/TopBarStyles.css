@@ -17,3 +17,24 @@
     outline: none;
 }
 
+.search-prefix {
+    background-image: url(../images/svgs/search.svg);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    padding-left: 30px;
+  }
+
+  .country-prefix {
+    background-image: url(../images/svgs/vector.svg);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    padding-left: 30px;
+  }
+
+  .filter-prefix {
+    background-image: url(../images/svgs/funnel.svg);
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    padding-left: 30px;
+  }
+

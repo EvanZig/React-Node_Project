@@ -16,24 +16,26 @@ import {
   CDropdownMenu,
 } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
-import { cifCh, cifFr, cifGb, cifIt } from "@coreui/icons-pro";
+import { cifCh, cifGb } from "@coreui/icons-pro";
 import CIcon from "@coreui/icons-react";
-import SearchIcon from "../images/svgs/search.svg";
 import CartIcon from "../images/svgs/cart4.svg";
 import HeartIcon from "../images/svgs/heart.svg";
 import PersonIcon from "../images/svgs/person.svg";
 import UkFlag from "../images/svgs/Flag_of_the_United_Kingdom.svg";
+import SearchBlack from "../images/svgs/search-black.svg";
+import SearchIcon from "../images/svgs/search.svg";
+import FunnelIcon from "../images/svgs/funnel.svg";
+import VectorIcon from "../images/svgs/vector.svg";
 import "../Styles/TopBarStyles.css";
 
 export default function TopBar() {
   const [visible, setVisible] = useState(false);
   return (
     <>
-      <CNavbar expand="lg" colorScheme="light" className="bg-black">
+      <CNavbar expand="lg" colorScheme="dark" className="bg-black">
         <CContainer fluid>
           <CNavbarBrand href="#">
             <span style={{ color: "white" }}>Some Company Logo</span>
-            <CImage></CImage>
           </CNavbarBrand>
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
@@ -41,18 +43,19 @@ export default function TopBar() {
               <CForm className="d-flex">
                 <CFormInput
                   type="search"
-                  className="me-2"
-                  placeholder="Search"
+                  className="me-1 search-prefix"
+                  placeholder="Search by name,index,etc"
                 />
+
                 <CFormInput
                   type="search"
-                  className="me-2"
+                  className="me-1 filter-prefix"
                   placeholder="All"
                   style={{ maxWidth: "150px" }}
                 />
                 <CFormInput
                   type="search"
-                  className="me-2"
+                  className="me-1 country-prefix"
                   placeholder="Country"
                 />
                 <CButton
@@ -60,7 +63,7 @@ export default function TopBar() {
                   variant="ghost"
                   style={{ backgroundColor: "rgba(255,220,0,250)" }}
                 >
-                  <CImage src={SearchIcon} />
+                  <CImage src={SearchBlack} />
                 </CButton>
               </CForm>
             </CNavbarNav>
@@ -150,7 +153,7 @@ export default function TopBar() {
                 </CDropdownItem>
                 <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
-                    icon={cifFr}
+                    icon={cifCh}
                     size="lg"
                     className="select-language__flag rounded-circle"
                   />{" "}
@@ -158,7 +161,7 @@ export default function TopBar() {
                 </CDropdownItem>
                 <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
-                    icon={cifIt}
+                    icon={cifCh}
                     size="lg"
                     className="select-language__flag rounded-circle"
                   />{" "}
