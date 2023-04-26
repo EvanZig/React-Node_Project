@@ -1,0 +1,19 @@
+.hover-yellow:hover{
+    background-color: rgba(255,220,0,250);
+    outline: none;
+}
+
+.remove-arrow::after{
+    display: none;
+}
+
+.active-yellow:click{
+    background-color: rgba(255,220,0,250);
+    outline: none;
+}
+
+.focus-yellow:focus{
+    background-color: rgba(255,220,0,250);
+    outline: none;
+}
+

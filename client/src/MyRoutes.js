@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./myCss.css";
+import "./Styles/myCss.css";
 import LoggedInProfile from "./loggedin/LoggedInProfile";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./loggedout/MainPage";

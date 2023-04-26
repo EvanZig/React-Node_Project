@@ -19,6 +19,11 @@ import "@coreui/coreui/dist/css/coreui.min.css";
 import { cifCh, cifFr, cifGb, cifIt } from "@coreui/icons-pro";
 import CIcon from "@coreui/icons-react";
 import SearchIcon from "../images/svgs/search.svg";
+import CartIcon from "../images/svgs/cart4.svg";
+import HeartIcon from "../images/svgs/heart.svg";
+import PersonIcon from "../images/svgs/person.svg";
+import UkFlag from "../images/svgs/Flag_of_the_United_Kingdom.svg";
+import "../Styles/TopBarStyles.css";
 
 export default function TopBar() {
   const [visible, setVisible] = useState(false);
@@ -26,7 +31,10 @@ export default function TopBar() {
     <>
       <CNavbar expand="lg" colorScheme="light" className="bg-black">
         <CContainer fluid>
-          <CNavbarBrand href="#">Navbar</CNavbarBrand>
+          <CNavbarBrand href="#">
+            <span style={{ color: "white" }}>Some Company Logo</span>
+            <CImage></CImage>
+          </CNavbarBrand>
           <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
@@ -49,7 +57,7 @@ export default function TopBar() {
                 />
                 <CButton
                   type="submit"
-                  variant="outline"
+                  variant="ghost"
                   style={{ backgroundColor: "rgba(255,220,0,250)" }}
                 >
                   <CImage src={SearchIcon} />
@@ -58,19 +66,81 @@ export default function TopBar() {
             </CNavbarNav>
           </CCollapse>
           <CNavbarNav>
-            <CDropdown variant="nav-item" popper={false} alignment="end">
-              <CDropdownToggle color="secondary">EN</CDropdownToggle>
+            <CDropdown popper={false} alignment="end">
+              <CDropdownToggle
+                variant="ghost"
+                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                shape="rounded-pill"
+              >
+                <CImage src={HeartIcon} />
+              </CDropdownToggle>
               <CDropdownMenu>
-                <CDropdownItem href="#">
+                <CDropdownItem href="#" className="focus-yellow">
+                  Action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Another action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Something else here
+                </CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown popper={false} alignment="end">
+              <CDropdownToggle
+                variant="ghost"
+                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                shape="rounded-pill"
+              >
+                <CImage src={CartIcon} />
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Another action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Something else here
+                </CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown popper={false} alignment="end">
+              <CDropdownToggle
+                variant="ghost"
+                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                shape="rounded-pill"
+              >
+                <CImage src={PersonIcon} />
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Another action
+                </CDropdownItem>
+                <CDropdownItem href="#" className="focus-yellow">
+                  Something else here
+                </CDropdownItem>
+              </CDropdownMenu>
+            </CDropdown>
+            <CDropdown variant="nav-item" popper={false} alignment="end">
+              <CDropdownToggle color="secondary">
+                <CImage src={UkFlag} />{" "}
+                <span style={{ color: "white" }}>EN</span>
+              </CDropdownToggle>
+              <CDropdownMenu>
+                <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
                     icon={cifGb}
                     size="lg"
-                    height={11}
                     className="select-language__flag rounded-circle"
                   />{" "}
                   English
                 </CDropdownItem>
-                <CDropdownItem href="#">
+                <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
                     icon={cifCh}
                     size="lg"
@@ -78,7 +148,7 @@ export default function TopBar() {
                   />{" "}
                   Deutsch
                 </CDropdownItem>
-                <CDropdownItem href="#">
+                <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
                     icon={cifFr}
                     size="lg"
@@ -86,7 +156,7 @@ export default function TopBar() {
                   />{" "}
                   Français
                 </CDropdownItem>
-                <CDropdownItem href="#">
+                <CDropdownItem href="#" className="focus-yellow">
                   <CIcon
                     icon={cifIt}
                     size="lg"
