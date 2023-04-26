@@ -10,6 +10,7 @@ import {
   AuthProvider,
 } from "./contexts/Context";
 import MainPageContextWraper from "./contexts/MainPageContext";
+import TopBar from "./components/TopBar";
 
 export const SignInRoute = () => (
   <BrowserRouter>
@@ -32,6 +33,7 @@ export default function MyRoutes() {
 
   return (
     <>
+      <TopBar />
       <AuthProvider>
         <AuthIsSignedIn>
           <SignInRoute />

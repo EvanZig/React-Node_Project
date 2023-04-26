@@ -5,6 +5,7 @@
   "dependencies": {
     "@coreui/coreui": "^4.2.6",
     "@coreui/icons": "^3.0.1",
+    "@coreui/icons-pro": "^3.0.0",
     "@coreui/icons-react": "^2.1.0",
     "@coreui/react": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.5",
