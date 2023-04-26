@@ -14,6 +14,7 @@ import {
   CDropdownToggle,
   CDropdownItem,
   CDropdownMenu,
+  CDropdownDivider,
 } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import { cifCh, cifGb } from "@coreui/icons-pro";
@@ -30,9 +31,10 @@ import "../Styles/TopBarStyles.css";
 
 export default function TopBar() {
   const [visible, setVisible] = useState(false);
+
   return (
     <>
-      <CNavbar expand="lg" colorScheme="dark" className="bg-black">
+      <CNavbar expand="lg" colorScheme="dark" className="bg-black text-white">
         <CContainer fluid>
           <CNavbarBrand href="#">
             <span style={{ color: "white" }}>Some Company Logo</span>
@@ -79,13 +81,26 @@ export default function TopBar() {
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem href="#" className="focus-yellow">
-                  Action
+                  <span
+                    style={{ fontWeight: "bold", textDecoration: "underline" }}
+                  >
+                    Log in
+                  </span>{" "}
+                  to see your favorites
                 </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Another action
+                <CDropdownDivider />
+                <CDropdownItem href="#" className="disabled-item" disabled>
+                  New to this company?
                 </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Something else here
+                <CDropdownItem href="#" className="hover-none button-parent">
+                  <CButton
+                    color="dark"
+                    variant="outline"
+                    className="start-here-button"
+                  >
+                    {" "}
+                    Start here
+                  </CButton>
                 </CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
@@ -101,6 +116,7 @@ export default function TopBar() {
                 <CDropdownItem href="#" className="focus-yellow">
                   Action
                 </CDropdownItem>
+                <CDropdownDivider />
                 <CDropdownItem href="#" className="focus-yellow">
                   Another action
                 </CDropdownItem>
@@ -124,6 +140,7 @@ export default function TopBar() {
                 <CDropdownItem href="#" className="focus-yellow">
                   Another action
                 </CDropdownItem>
+                <CDropdownDivider />
                 <CDropdownItem href="#" className="focus-yellow">
                   Something else here
                 </CDropdownItem>
@@ -131,7 +148,7 @@ export default function TopBar() {
             </CDropdown>
             <CDropdown variant="nav-item" popper={false} alignment="end">
               <CDropdownToggle color="secondary">
-                <CImage src={UkFlag} />{" "}
+                <CImage rounded src={UkFlag} />{" "}
                 <span style={{ color: "white" }}>EN</span>
               </CDropdownToggle>
               <CDropdownMenu>
