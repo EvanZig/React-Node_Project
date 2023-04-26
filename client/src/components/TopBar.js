@@ -80,7 +80,7 @@ export default function TopBar() {
                 <CImage src={HeartIcon} />
               </CDropdownToggle>
               <CDropdownMenu>
-                <CDropdownItem href="#" className="focus-yellow">
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
                   >
@@ -111,15 +111,25 @@ export default function TopBar() {
                 <CImage src={CartIcon} />
               </CDropdownToggle>
               <CDropdownMenu>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Action
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
+                  <span
+                    style={{ fontWeight: "bold", textDecoration: "underline" }}
+                  >
+                    Log in
+                  </span>{" "}
+                  to see your Cart
                 </CDropdownItem>
-                <CDropdownDivider />
-                <CDropdownItem href="#" className="focus-yellow">
-                  Another action
-                </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Something else here
+                <CDropdownDivider className="dropdown-divider" />
+                <div class="newToCompany">New to this company?</div>
+                <CDropdownItem href="#" className="hover-none button-parent">
+                  <CButton
+                    color="dark"
+                    variant="outline"
+                    className="start-here-button"
+                  >
+                    {" "}
+                    Start here
+                  </CButton>
                 </CDropdownItem>
               </CDropdownMenu>
             </CDropdown>
@@ -150,7 +160,7 @@ export default function TopBar() {
                 <span style={{ color: "white" }}>EN</span>
               </CDropdownToggle>
               <CDropdownMenu>
-                <CDropdownItem href="#" className="focus-yellow">
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <CIcon
                     icon={cifGb}
                     size="lg"
@@ -158,7 +168,7 @@ export default function TopBar() {
                   />{" "}
                   English
                 </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <CIcon
                     icon={cifCh}
                     size="lg"
@@ -166,7 +176,7 @@ export default function TopBar() {
                   />{" "}
                   Deutsch
                 </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <CIcon
                     icon={cifCh}
                     size="lg"
@@ -174,7 +184,7 @@ export default function TopBar() {
                   />{" "}
                   Français
                 </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
+                <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <CIcon
                     icon={cifCh}
                     size="lg"
