@@ -4,16 +4,13 @@ export const topBarContext = React.createContext({});
 export const TopBarContextProvider = topBarContext.Provider;
 
 const TopBarContextWrapper = (props) => {
-  const [busketClicked, setBusketClicked] = useState(false);
-  const [changeLanguageClicked, setChangeLanguageClicked] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState("En");
 
   return (
     <TopBarContextProvider
       value={{
-        busketClicked,
-        setBusketClicked,
-        changeLanguageClicked,
-        setChangeLanguageClicked,
+        currentLanguage,
+        setCurrentLanguage,
       }}
     >
       {props.children}
