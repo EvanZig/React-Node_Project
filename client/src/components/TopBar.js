@@ -113,7 +113,7 @@ export default function TopBar() {
               >
                 <CImage src={HeartIcon} />
               </CButton>
-              <CDropdownMenu name="menu">
+              <CDropdownMenu>
                 <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
@@ -190,20 +190,26 @@ export default function TopBar() {
                 <CImage src={PersonIcon} />
               </CButton>
               <CDropdownMenu>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Action
-                </CDropdownItem>
-                <CDropdownItem href="#" className="focus-yellow">
-                  Another action
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontSize: "20px",
+                    textAlign: "center",
+                    marginBottom: "-10px",
+                  }}
+                >
+                  Welcome to cubotoo!
+                </div>
+                <CDropdownItem href="#" className="focus-yellow button-parent ">
+                  <CButton color="dark" className="log-in-button">
+                    {" "}
+                    Log In
+                  </CButton>
                 </CDropdownItem>
                 <CDropdownDivider />
                 <div className="newToCompany">
                   New to this company?{" "}
-                  <span
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    Start here
-                  </span>
+                  <span className="start-here-text">Start here</span>
                 </div>
               </CDropdownMenu>
             </CDropdown>

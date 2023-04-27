@@ -77,4 +77,30 @@
   .start-here-button:hover{
     background-color: rgba(255,220,0,250);
   }
+
+  .log-in-button{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: black;
+    font-size: 19px;
+    font-weight: 640;
+  }
   
+  .log-in-button:hover{
+    background-color: rgba(255,220,0,250);
+  }
+
+  .start-here-text{
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .start-here-text:hover{
+    color: rgba(255,220,0,250);
+
+  }
