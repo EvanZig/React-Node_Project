@@ -7,7 +7,7 @@
     display: none;
 }
 
-.active-yellow:click{
+.active-yellow:active{
     background-color: rgba(255,220,0,250);
     outline: none;
 }
