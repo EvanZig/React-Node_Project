@@ -23,9 +23,6 @@ import CartIcon from "../images/svgs/cart4.svg";
 import HeartIcon from "../images/svgs/heart.svg";
 import PersonIcon from "../images/svgs/person.svg";
 import SearchBlack from "../images/svgs/search-black.svg";
-import SearchIcon from "../images/svgs/search.svg";
-import FunnelIcon from "../images/svgs/funnel.svg";
-import VectorIcon from "../images/svgs/vector.svg";
 import { TopBarContext } from "../contexts/TopBarContext";
 import "../Styles/TopBarStyles.css";
 
