@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/myCss.css";
 import LoggedInProfile from "./loggedin/LoggedInProfile";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import MainPage from "./loggedout/MainPage";
 import {
   AuthIsNotSignedIn,
@@ -13,41 +13,39 @@ import MainPageContextWraper from "./contexts/MainPageContext";
 import TopBarContextWrapper from "./contexts/TopBarContext";
 import TopBar from "./components/TopBar";
 
-export const SignInRoute = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<LoggedInProfile />} />
-    </Routes>
-  </BrowserRouter>
+const SignInRoutes = () => (
+  <Routes>
+    <Route path="/" element={<LoggedInProfile />} />
+  </Routes>
 );
 
-export const MainRoute = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route exact path="/" element={<MainPage />}></Route>
-    </Routes>
-  </BrowserRouter>
+const MainRoutes = () => (
+  <Routes>
+    <Route path="/" element={<MainPage />} />
+  </Routes>
+);
+
+const Layout = () => (
+  <TopBarContextWrapper>
+    <TopBar />
+    <Outlet />
+  </TopBarContextWrapper>
 );
 
 export default function MyRoutes() {
-  // const authContext = useContext(AuthContext)
-
   return (
-    <>
-      <TopBarContextWrapper>
-        <TopBar />
-      </TopBarContextWrapper>
-
+    <BrowserRouter>
       <AuthProvider>
+        <Layout />
         <AuthIsSignedIn>
-          <SignInRoute />
+          <SignInRoutes />
         </AuthIsSignedIn>
         <AuthIsNotSignedIn>
           <MainPageContextWraper>
-            <MainRoute />
+            <MainRoutes />
           </MainPageContextWraper>
         </AuthIsNotSignedIn>
       </AuthProvider>
-    </>
+    </BrowserRouter>
   );
 }

@@ -104,3 +104,25 @@
     color: rgba(255,220,0,250);
 
   }
+
+
+  
+/*  reponsiveness */
+
+.navbar-logo{grid-area:head;}
+.navbar-collapse{grid-area:head;}
+.navbar-userMenus{grid-area:head;}
+.navbar{grid-area:head;}
+.navbar{grid-area:head;}
+
+@media (max-width: 767px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "search"
+      "favorites"
+      "cart"
+      "profile";
+  }
+}

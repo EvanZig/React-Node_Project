@@ -59,12 +59,19 @@ export default function TopBar() {
 
   return (
     <>
-      <CNavbar expand="lg" colorScheme="dark" className="bg-black text-white">
+      <CNavbar
+        expand="lg"
+        colorScheme="dark"
+        className="navbar bg-black text-white"
+      >
         <CContainer fluid>
-          <CNavbarBrand href="#">
+          <CNavbarBrand href="#" className="navbar-logo">
             <span style={{ color: "white" }}>Some Company Logo</span>
           </CNavbarBrand>
-          <CNavbarToggler onClick={() => setVisible(!visible)} />
+          <CNavbarToggler
+            onClick={() => setVisible(!visible)}
+            visible={false}
+          />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
               <CForm className="d-flex">
@@ -95,7 +102,7 @@ export default function TopBar() {
               </CForm>
             </CNavbarNav>
           </CCollapse>
-          <CNavbarNav>
+          <CNavbarNav className="navbar-userMenus">
             <CDropdown
               popper={false}
               alignment="end"
