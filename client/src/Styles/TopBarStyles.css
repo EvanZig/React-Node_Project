@@ -104,6 +104,16 @@
     color: rgba(255,220,0,250);
   }
   
+  /* flag icons */
+  .select-flag-wrapper{
+    width: 20px;
+		height: 20px;
+  }
+
+  .select-flag{
+    transform: translateX(-25%);
+  }
+
 /*  reponsiveness */
 
 @media (max-width: 993px) {

@@ -260,12 +260,18 @@ export default function TopBar() {
                   <CDropdownItem
                     href="#"
                     className="hover-yellow focus-yellow"
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-start",
+                    }}
                     onClick={() => {
                       topBarContext.setCurrentLanguage("En");
                     }}
                   >
-                    <CIcon icon={cifGb} size="lg" className="rounded-circle" />{" "}
-                    English
+                    <div className="select-flag-wrapper overflow-hidden rounded-circle">
+                      <CIcon icon={cifGb} height={20} className="select-flag" />
+                    </div>
+                    <span style={{ marginLeft: "8px" }}>English</span>
                   </CDropdownItem>
                   <CDropdownItem
                     href="#"
@@ -275,7 +281,7 @@ export default function TopBar() {
                     }}
                   >
                     <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
-                    Deutsch
+                    <span style={{ marginLeft: "4px" }}>Deutch</span>
                   </CDropdownItem>
                   <CDropdownItem
                     href="#"
@@ -285,7 +291,7 @@ export default function TopBar() {
                     }}
                   >
                     <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
-                    Français
+                    <span style={{ marginLeft: "4px" }}>Français</span>
                   </CDropdownItem>
                   <CDropdownItem
                     href="#"
@@ -295,7 +301,7 @@ export default function TopBar() {
                     }}
                   >
                     <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
-                    Italiano
+                    <span style={{ marginLeft: "4px" }}>Italiano</span>
                   </CDropdownItem>
                 </CDropdownMenu>
               </div>
