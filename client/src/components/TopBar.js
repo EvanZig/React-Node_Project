@@ -64,14 +64,11 @@ export default function TopBar() {
         colorScheme="dark"
         className="navbar bg-black text-white"
       >
-        <CContainer fluid>
+        <CContainer fluid className="navbar">
           <CNavbarBrand href="#" className="navbar-logo">
             <span style={{ color: "white" }}>Some Company Logo</span>
           </CNavbarBrand>
-          <CNavbarToggler
-            onClick={() => setVisible(!visible)}
-            visible={false}
-          />
+          <CNavbarToggler onClick={() => setVisible(!visible)} />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
               <CForm className="d-flex">
@@ -111,13 +108,13 @@ export default function TopBar() {
             >
               <CButton
                 variant="ghost"
-                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                className="menu-button focus-yellow hover-yellow remove-arrow active-yellow"
                 shape="rounded-pill"
                 onClick={toggleFavorites}
               >
                 <CImage src={HeartIcon} />
               </CButton>
-              <CDropdownMenu>
+              <CDropdownMenu className="dropdown-menu">
                 <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
@@ -148,13 +145,13 @@ export default function TopBar() {
             >
               <CButton
                 variant="ghost"
-                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                className="menu-button focus-yellow hover-yellow remove-arrow active-yellow"
                 shape="rounded-pill"
                 onClick={toggleCart}
               >
                 <CImage src={CartIcon} />
               </CButton>
-              <CDropdownMenu>
+              <CDropdownMenu className="dropdown-menu">
                 <CDropdownItem href="#" className="hover-yellow focus-yellow">
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
@@ -185,7 +182,7 @@ export default function TopBar() {
             >
               <CButton
                 variant="ghost"
-                className="focus-yellow hover-yellow remove-arrow active-yellow"
+                className="menu-button focus-yellow hover-yellow remove-arrow active-yellow"
                 shape="rounded-pill"
                 onClick={() => {
                   setprofileVisibility(!profileVisibility);
@@ -193,7 +190,7 @@ export default function TopBar() {
               >
                 <CImage src={PersonIcon} />
               </CButton>
-              <CDropdownMenu>
+              <CDropdownMenu className="dropdown-menu">
                 <div
                   style={{
                     fontWeight: "bold",
@@ -228,7 +225,7 @@ export default function TopBar() {
                   {topBarContext.currentLanguage}
                 </span>
               </CDropdownToggle>
-              <CDropdownMenu>
+              <CDropdownMenu className="dropdown-menu">
                 <CDropdownItem
                   href="#"
                   className="hover-yellow focus-yellow"

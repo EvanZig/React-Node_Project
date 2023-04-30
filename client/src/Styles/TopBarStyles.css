@@ -109,20 +109,42 @@
   
 /*  reponsiveness */
 
-.navbar-logo{grid-area:head;}
-.navbar-collapse{grid-area:head;}
-.navbar-userMenus{grid-area:head;}
-.navbar{grid-area:head;}
-.navbar{grid-area:head;}
+.navbar-logo { grid-area: logo; }
+.navbar-collapse { grid-area: search; }
 
-@media (max-width: 767px) {
+@media (max-width: 993px) {
   .navbar {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "logo"
-      "search"
-      "favorites"
-      "cart"
-      "profile";
+    max-height: 150px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* userMenu  */
+  .navbar-userMenus {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .menu-button{
+    position: relative;
+    height: 50px;
+    width: 60px;
+  }
+
+  .dropdown-menu{
+    /* make it not push content to right somehow */
+  }
+
+  .button-parent{
+    position: relative;
+    width: 220px;
+    height:50px;
+    margin: 20px;
+  }
+
+  /* search menu */
+
+  .navbar-collapse {
   }
 }
