@@ -102,15 +102,9 @@
 
   .start-here-text:hover{
     color: rgba(255,220,0,250);
-
   }
-
-
   
 /*  reponsiveness */
-
-.navbar-logo { grid-area: logo; }
-.navbar-collapse { grid-area: search; }
 
 @media (max-width: 993px) {
   .navbar {
@@ -127,13 +121,14 @@
   }
 
   .menu-button{
-    position: relative;
     height: 50px;
     width: 60px;
   }
 
-  .dropdown-menu{
-    /* make it not push content to right somehow */
+  .outside-menu{
+    position: absolute;
+    margin-top: 50px;
+    z-index: 999;
   }
 
   .button-parent{
@@ -143,8 +138,41 @@
     margin: 20px;
   }
 
-  /* search menu */
+  .language-menu{
+    position: absolute;
+  }
 
+  /* search menu */
+  .navbar-toggler{
+    margin-top: -15px;
+    margin-right: 10px;
+  }
+  
   .navbar-collapse {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .navbar-logo{
+    margin-left: 5px;
+  }
+}
+
+
+
+
+@media ((min-width: 541px) and (max-width: 993px)) {
+  .toggled-off-searches-favorites{
+    margin-left: -15px;
+  }
+
+  .toggled-off-searches-cart{
+    margin-left: -75px;
+  }
+  .toggled-off-searches-account{
+    margin-left: -135px;
+  }
+
+  .language-menu{
+    margin-left: -95px;
   }
 }

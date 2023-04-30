@@ -68,7 +68,10 @@ export default function TopBar() {
           <CNavbarBrand href="#" className="navbar-logo">
             <span style={{ color: "white" }}>Some Company Logo</span>
           </CNavbarBrand>
-          <CNavbarToggler onClick={() => setVisible(!visible)} />
+          <CNavbarToggler
+            onClick={() => setVisible(!visible)}
+            className="navbar-toggler"
+          />
           <CCollapse className="navbar-collapse" visible={visible}>
             <CNavbarNav>
               <CForm className="d-flex">
@@ -114,28 +117,37 @@ export default function TopBar() {
               >
                 <CImage src={HeartIcon} />
               </CButton>
-              <CDropdownMenu className="dropdown-menu">
-                <CDropdownItem href="#" className="hover-yellow focus-yellow">
-                  <span
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    Log in
-                  </span>{" "}
-                  to see your favorites
-                </CDropdownItem>
-                <CDropdownDivider className="dropdown-divider" />
-                <div className="newToCompany">New to this company?</div>
-                <CDropdownItem href="#" className="hover-none button-parent">
-                  <CButton
-                    color="dark"
-                    variant="outline"
-                    className="start-here-button"
-                  >
-                    {" "}
-                    Start here
-                  </CButton>
-                </CDropdownItem>
-              </CDropdownMenu>
+              <div
+                className={`outside-menu ${
+                  visible ? "" : "toggled-off-searches-favorites"
+                }`}
+              >
+                <CDropdownMenu className="dropdown-menu">
+                  <CDropdownItem href="#" className="hover-yellow focus-yellow">
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Log in
+                    </span>{" "}
+                    to see your favorites
+                  </CDropdownItem>
+                  <CDropdownDivider className="dropdown-divider" />
+                  <div className="newToCompany">New to this company?</div>
+                  <CDropdownItem href="#" className="hover-none button-parent">
+                    <CButton
+                      color="dark"
+                      variant="outline"
+                      className="start-here-button"
+                    >
+                      {" "}
+                      Start here
+                    </CButton>
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </div>
             </CDropdown>
             <CDropdown
               popper={false}
@@ -151,28 +163,37 @@ export default function TopBar() {
               >
                 <CImage src={CartIcon} />
               </CButton>
-              <CDropdownMenu className="dropdown-menu">
-                <CDropdownItem href="#" className="hover-yellow focus-yellow">
-                  <span
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    Log in
-                  </span>{" "}
-                  to see your Cart
-                </CDropdownItem>
-                <CDropdownDivider className="dropdown-divider" />
-                <div className="newToCompany">New to this company?</div>
-                <CDropdownItem href="#" className="hover-none button-parent">
-                  <CButton
-                    color="dark"
-                    variant="outline"
-                    className="start-here-button"
-                  >
-                    {" "}
-                    Start here
-                  </CButton>
-                </CDropdownItem>
-              </CDropdownMenu>
+              <div
+                className={`outside-menu ${
+                  visible ? "" : "toggled-off-searches-cart"
+                }`}
+              >
+                <CDropdownMenu className="dropdown-menu">
+                  <CDropdownItem href="#" className="hover-yellow focus-yellow">
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Log in
+                    </span>{" "}
+                    to see your Cart
+                  </CDropdownItem>
+                  <CDropdownDivider className="dropdown-divider" />
+                  <div className="newToCompany">New to this company?</div>
+                  <CDropdownItem href="#" className="hover-none button-parent">
+                    <CButton
+                      color="dark"
+                      variant="outline"
+                      className="start-here-button"
+                    >
+                      {" "}
+                      Start here
+                    </CButton>
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </div>
             </CDropdown>
             <CDropdown
               popper={false}
@@ -190,29 +211,38 @@ export default function TopBar() {
               >
                 <CImage src={PersonIcon} />
               </CButton>
-              <CDropdownMenu className="dropdown-menu">
-                <div
-                  style={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                    textAlign: "center",
-                    marginBottom: "-10px",
-                  }}
-                >
-                  Welcome to cubotoo!
-                </div>
-                <CDropdownItem href="#" className="focus-yellow button-parent ">
-                  <CButton color="dark" className="log-in-button">
-                    {" "}
-                    Log In
-                  </CButton>
-                </CDropdownItem>
-                <CDropdownDivider />
-                <div className="newToCompany">
-                  New to this company?{" "}
-                  <span className="start-here-text">Start here</span>
-                </div>
-              </CDropdownMenu>
+              <div
+                className={`outside-menu ${
+                  visible ? "" : "toggled-off-searches-account"
+                }`}
+              >
+                <CDropdownMenu className="dropdown-menu">
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "20px",
+                      textAlign: "center",
+                      marginBottom: "-10px",
+                    }}
+                  >
+                    Welcome to cubotoo!
+                  </div>
+                  <CDropdownItem
+                    href="#"
+                    className="focus-yellow button-parent "
+                  >
+                    <CButton color="dark" className="log-in-button">
+                      {" "}
+                      Log In
+                    </CButton>
+                  </CDropdownItem>
+                  <CDropdownDivider />
+                  <div className="newToCompany">
+                    New to this company?{" "}
+                    <span className="start-here-text">Start here</span>
+                  </div>
+                </CDropdownMenu>
+              </div>
             </CDropdown>
             <CDropdown variant="nav-item" popper={false} alignment="end">
               <CDropdownToggle color="secondary">
@@ -225,64 +255,50 @@ export default function TopBar() {
                   {topBarContext.currentLanguage}
                 </span>
               </CDropdownToggle>
-              <CDropdownMenu className="dropdown-menu">
-                <CDropdownItem
-                  href="#"
-                  className="hover-yellow focus-yellow"
-                  onClick={() => {
-                    topBarContext.setCurrentLanguage("En");
-                  }}
-                >
-                  <CIcon
-                    icon={cifGb}
-                    size="lg"
-                    className="select-language__flag rounded-circle"
-                  />{" "}
-                  English
-                </CDropdownItem>
-                <CDropdownItem
-                  href="#"
-                  className="hover-yellow focus-yellow"
-                  onClick={() => {
-                    topBarContext.setCurrentLanguage("Ger");
-                  }}
-                >
-                  <CIcon
-                    icon={cifCh}
-                    size="lg"
-                    className="select-language__flag rounded-circle"
-                  />{" "}
-                  Deutsch
-                </CDropdownItem>
-                <CDropdownItem
-                  href="#"
-                  className="hover-yellow focus-yellow"
-                  onClick={() => {
-                    topBarContext.setCurrentLanguage("Fr");
-                  }}
-                >
-                  <CIcon
-                    icon={cifCh}
-                    size="lg"
-                    className="select-language__flag rounded-circle"
-                  />{" "}
-                  Français
-                </CDropdownItem>
-                <CDropdownItem
-                  href="#"
-                  className="hover-yellow focus-yellow"
-                  onClick={() => {
-                    topBarContext.setCurrentLanguage("It");
-                  }}
-                >
-                  <CIcon
-                    icon={cifCh}
-                    size="lg"
-                    className="select-language__flag rounded-circle"
-                  />{" "}
-                  Italiano
-                </CDropdownItem>
-              </CDropdownMenu>
+              <div className="language-menu">
+                <CDropdownMenu className="dropdown-menu">
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      topBarContext.setCurrentLanguage("En");
+                    }}
+                  >
+                    <CIcon icon={cifGb} size="lg" className="rounded-circle" />{" "}
+                    English
+                  </CDropdownItem>
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      topBarContext.setCurrentLanguage("Ger");
+                    }}
+                  >
+                    <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
+                    Deutsch
+                  </CDropdownItem>
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      topBarContext.setCurrentLanguage("Fr");
+                    }}
+                  >
+                    <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
+                    Français
+                  </CDropdownItem>
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      topBarContext.setCurrentLanguage("It");
+                    }}
+                  >
+                    <CIcon icon={cifCh} size="lg" className="rounded-circle" />{" "}
+                    Italiano
+                  </CDropdownItem>
+                </CDropdownMenu>
+              </div>
             </CDropdown>
           </CNavbarNav>
         </CContainer>
