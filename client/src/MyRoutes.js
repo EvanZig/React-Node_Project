@@ -9,9 +9,9 @@ import {
   AuthIsSignedIn,
   AuthProvider,
 } from "./contexts/Context";
-import MainPageContextWraper from "./contexts/MainPageContext";
 import TopBarContextWrapper from "./contexts/TopBarContext";
 import TopBar from "./components/TopBar";
+import GlobalVariablesContextWrapper from "./contexts/GlobalVariablesContext";
 
 const SignInRoutes = () => (
   <Routes>
@@ -35,17 +35,17 @@ const Layout = () => (
 export default function MyRoutes() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Layout />
-        <AuthIsSignedIn>
-          <SignInRoutes />
-        </AuthIsSignedIn>
-        <AuthIsNotSignedIn>
-          <MainPageContextWraper>
+      <GlobalVariablesContextWrapper>
+        <AuthProvider>
+          <Layout />
+          <AuthIsSignedIn>
+            <SignInRoutes />
+          </AuthIsSignedIn>
+          <AuthIsNotSignedIn>
             <MainRoutes />
-          </MainPageContextWraper>
-        </AuthIsNotSignedIn>
-      </AuthProvider>
+          </AuthIsNotSignedIn>
+        </AuthProvider>
+      </GlobalVariablesContextWrapper>
     </BrowserRouter>
   );
 }

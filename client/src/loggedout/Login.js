@@ -13,7 +13,7 @@ import {
 } from "@coreui/react";
 import "@coreui/coreui/dist/css/coreui.min.css";
 import loginBackgroundImage from "../images/bg-login.png";
-import { MainPageContext } from "../contexts/MainPageContext";
+import { GlobalVariablesContext } from "../contexts/GlobalVariablesContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 import { useFormik } from "formik";
@@ -22,7 +22,7 @@ import { mySchema } from "../schema/mySchema";
 import { AuthContext } from "../contexts/Context";
 
 export default function Login() {
-  const modalContext = useContext(MainPageContext);
+  const modalContext = useContext(GlobalVariablesContext);
   const isSpinnerVisible = false;
   const authContext = useContext(AuthContext);
   const [wrongCredentials, setWrongCredentials] = useState(false);

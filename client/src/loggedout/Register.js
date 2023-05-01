@@ -17,7 +17,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { mySchema, passwordErros } from "../schema/mySchema";
 import signupBackgroundImage from "../images/bg-signup.png";
-import { MainPageContext } from "../contexts/MainPageContext";
+import { GlobalVariablesContext } from "../contexts/GlobalVariablesContext";
 import { cilXCircle } from "@coreui/icons";
 import CIcon from "@coreui/icons-react";
 // import { http } from "../config/httpExample";
@@ -25,7 +25,7 @@ import { AuthContext } from "../contexts/Context";
 import axios from "axios";
 
 export default function Register() {
-  const modalContext = useContext(MainPageContext);
+  const modalContext = useContext(GlobalVariablesContext);
   const authContext = useContext(AuthContext);
 
   const onSubmit = (values, actions) => {

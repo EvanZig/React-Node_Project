@@ -25,9 +25,11 @@ import PersonIcon from "../images/svgs/person.svg";
 import SearchBlack from "../images/svgs/search-black.svg";
 import { TopBarContext } from "../contexts/TopBarContext";
 import "../Styles/TopBarStyles.css";
+import { GlobalVariablesContext } from "../contexts/GlobalVariablesContext";
 
 export default function TopBar() {
   const topBarContext = useContext(TopBarContext);
+  const globalVariablesContext = useContext(GlobalVariablesContext);
   const [visible, setVisible] = useState(true);
   const [favoritesVisibility, setFavoritesVisibility] = useState(false);
   const [cartVisibility, setCartVisibility] = useState(false);
@@ -123,7 +125,14 @@ export default function TopBar() {
                 }`}
               >
                 <CDropdownMenu className="dropdown-menu">
-                  <CDropdownItem href="#" className="hover-yellow focus-yellow">
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      globalVariablesContext.setLoginModalVisibility(true);
+                      toggleFavorites();
+                    }}
+                  >
                     <span
                       style={{
                         fontWeight: "bold",
@@ -141,6 +150,10 @@ export default function TopBar() {
                       color="dark"
                       variant="outline"
                       className="start-here-button"
+                      onClick={() => {
+                        globalVariablesContext.setRegisterModalVisibility(true);
+                        toggleFavorites();
+                      }}
                     >
                       {" "}
                       Start here
@@ -169,7 +182,14 @@ export default function TopBar() {
                 }`}
               >
                 <CDropdownMenu className="dropdown-menu">
-                  <CDropdownItem href="#" className="hover-yellow focus-yellow">
+                  <CDropdownItem
+                    href="#"
+                    className="hover-yellow focus-yellow"
+                    onClick={() => {
+                      globalVariablesContext.setLoginModalVisibility(true);
+                      toggleCart();
+                    }}
+                  >
                     <span
                       style={{
                         fontWeight: "bold",
@@ -187,8 +207,11 @@ export default function TopBar() {
                       color="dark"
                       variant="outline"
                       className="start-here-button"
+                      onClick={() => {
+                        globalVariablesContext.setRegisterModalVisibility(true);
+                        toggleCart();
+                      }}
                     >
-                      {" "}
                       Start here
                     </CButton>
                   </CDropdownItem>
@@ -231,15 +254,30 @@ export default function TopBar() {
                     href="#"
                     className="focus-yellow button-parent "
                   >
-                    <CButton color="dark" className="log-in-button">
+                    <CButton
+                      color="dark"
+                      className="log-in-button"
+                      onClick={() => {
+                        globalVariablesContext.setLoginModalVisibility(true);
+                        setprofileVisibility(!profileVisibility);
+                      }}
+                    >
                       {" "}
                       Log In
                     </CButton>
                   </CDropdownItem>
                   <CDropdownDivider />
                   <div className="newToCompany">
-                    New to this company?{" "}
-                    <span className="start-here-text">Start here</span>
+                    New to this company?
+                    <span
+                      className="start-here-text"
+                      onClick={() => {
+                        globalVariablesContext.setRegisterModalVisibility(true);
+                        setprofileVisibility(!profileVisibility);
+                      }}
+                    >
+                      Start here
+                    </span>
                   </div>
                 </CDropdownMenu>
               </div>

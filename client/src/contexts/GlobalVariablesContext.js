@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 
-export const MainPageContext = React.createContext({});
-export const MainPageContextProvider = MainPageContext.Provider;
+export const GlobalVariablesContext = React.createContext({});
+export const GlobalVariablesContextProvider = GlobalVariablesContext.Provider;
 
-const MainPageContextWraper = (props) => {
+const GlobalVariablesContextWrapper = (props) => {
   const [loginModalVisibility, setLoginModalVisibility] = useState(false);
   const [registerModalVisibility, setRegisterModalVisibility] = useState(false);
-
   return (
-    <MainPageContextProvider
+    <GlobalVariablesContextProvider
       value={{
         loginModalVisibility,
         setLoginModalVisibility,
@@ -17,8 +16,8 @@ const MainPageContextWraper = (props) => {
       }}
     >
       {props.children}
-    </MainPageContextProvider>
+    </GlobalVariablesContextProvider>
   );
 };
 
-export default MainPageContextWraper;
+export default GlobalVariablesContextWrapper;
