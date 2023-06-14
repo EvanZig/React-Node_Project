@@ -3,9 +3,9 @@ with login/register forms, a crud page and a responsive topbar for a hypothetica
 
 Front end:
 For the UI i used CoreUI for the register/login modals and topbar and for the crud page which is shown after the user is logged in i used react-bootstrap.
-I used react-router for the routing between the main and logged in page.
-The libraries Formik and yup were used to validate the login and register forms.
-Axios was used for the api calls.
+React-router was used for the routing between the main and logged in page.
+The libraries Formik and yup were used to validate the login and register forms and 
+Axios was used for the api calls. Lastly i created a mock server using axios-mock-adapter.
 
 Back end: 
 Library mysql2 was used to connect with the mySQL database as well as make a pool of 10 connections.
